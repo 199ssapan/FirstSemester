@@ -1,0 +1,4 @@
+﻿  stringLength.c
+C:\Users\Admin\Desktop\Task7\Task7_1\stringLength.c(33,12): warning C4477: "printf_s": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "2" имеет тип "size_t"
+C:\Users\Admin\Desktop\Task7\Task7_1\stringLength.c(33,12): message : рекомендуется использовать "%zd" в строке форматирования
+  Task7_1.vcxproj -> C:\Users\Admin\Desktop\Task7\x64\Debug\Task7_1.exe

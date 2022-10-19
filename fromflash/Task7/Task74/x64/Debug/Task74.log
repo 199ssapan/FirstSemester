@@ -1,0 +1,6 @@
+﻿  fileAndStrings.c
+C:\Users\Admin\Desktop\fromflash\Task7\Task74\fileAndStrings.c(74,34): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Admin\Desktop\fromflash\Task7\Task74\fileAndStrings.c(186,20): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Admin\Desktop\fromflash\Task7\Task74\fileAndStrings.c(187,21): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+  LINK : не найден или не выполнена сборка C:\Users\Admin\Desktop\fromflash\Task7\x64\Debug\Task74.exe при последней инкрементной компоновке; выполняется полная компоновка
+  Task74.vcxproj -> C:\Users\Admin\Desktop\fromflash\Task7\x64\Debug\Task74.exe

@@ -1,0 +1,4 @@
+﻿  mainArgs.c
+C:\Users\Admin\Desktop\fromflash\Task7\Task7_2\mainArgs.c(46,12): warning C4477: "printf_s": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "2" имеет тип "size_t"
+C:\Users\Admin\Desktop\fromflash\Task7\Task7_2\mainArgs.c(46,12): message : рекомендуется использовать "%zd" в строке форматирования
+  Task7_2.vcxproj -> C:\Users\Admin\Desktop\fromflash\Task7\x64\Debug\Task7_2.exe

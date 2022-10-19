@@ -1,0 +1,3 @@
+﻿  coord.c
+C:\Users\Admin\Desktop\Task7\task73\coord.c(72,21): warning C4022: free: несоответствие указателя для фактического параметра 1
+  task73.vcxproj -> C:\Users\Admin\Desktop\Task7\x64\Debug\task73.exe
