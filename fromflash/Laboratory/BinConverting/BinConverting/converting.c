@@ -16,22 +16,32 @@ int main(int argc, char* argv[])
 {
 
     FILE* input, * output;
-    printf_s("Enter an input and output file names\n>");
-    char* inputFileName = malloc(MAX_FILE_NAME_SYMBOLS * sizeof(char));
-    char* outputFileName = malloc(MAX_FILE_NAME_SYMBOLS * sizeof(char));
+    //printf_s("Enter an input and output file names\n>");
+    char* inputFileName = argv[1];//malloc(MAX_FILE_NAME_SYMBOLS * sizeof(char));
+    char* outputFileName = argv[2];//malloc(MAX_FILE_NAME_SYMBOLS * sizeof(char));
     if (!(inputFileName || outputFileName))
     {
         printf_s(MEM_ALL_ERR);
         exit(1);
     }
-    scanf_s("%s %s", inputFileName, 100, outputFileName, 100);
+    if (strlen(inputFileName) >= MAX_FILE_NAME_SYMBOLS)
+    {
+        printf_s("Too long input file name");
+        exit(1);
+    }
+    else if (strlen(outputFileName) >= MAX_FILE_NAME_SYMBOLS)
+    {
+        printf_s("Too long output file name");
+        exit(1);
+    }
+    //scanf_s("%s %s", inputFileName, 100, outputFileName, 100);
 
-    if (fopen_s(&input, "input.txt", "r"))
+    if (fopen_s(&input, inputFileName, "r"))
     {
         perror("Input file: ");
         exit(1);
     }
-    if (fopen_s(&output, "output.txt", "r+"))
+    if (fopen_s(&output, outputFileName, "r+"))
     {
         perror("Output file: ");
         exit(1);
