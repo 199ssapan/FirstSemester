@@ -52,7 +52,7 @@ int main(int argc, char* argv[])
     char* intMaxString = "2147483647";
     if (fgets(checkString, 13, input))
     {
-        for (int i = 1; i < strlen(checkString); i++)
+        for (int i = 0; i < strlen(checkString); i++)
         {
             if (!(checkString[i] >= '0' && checkString[i] <= '9') && !(checkString[i] == '-'))
             {
