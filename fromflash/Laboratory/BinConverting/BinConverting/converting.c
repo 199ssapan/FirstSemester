@@ -12,7 +12,7 @@ int* createBinaryNumber(int);
 void binNumberTransormation(int*, int*, int);
 int sumDigitsInNumber(int);
 
-int main()
+int main(int argc, char* argv[])
 {
 
     FILE* input, * output;
@@ -22,26 +22,27 @@ int main()
     if (!(inputFileName || outputFileName))
     {
         printf_s(MEM_ALL_ERR);
+        exit(1);
     }
     scanf_s("%s %s", inputFileName, 100, outputFileName, 100);
 
-    if (fopen_s(&input, inputFileName, "r"))
+    if (fopen_s(&input, "input.txt", "r"))
     {
         perror("Input file: ");
         exit(1);
     }
-    if (fopen_s(&output, outputFileName, "r+"))
+    if (fopen_s(&output, "output.txt", "r+"))
     {
         perror("Output file: ");
         exit(1);
     }
-
-    char* checkString = (char*)malloc(12 * sizeof(char));
+    
+    char* checkString = (char*)malloc(13 * sizeof(char));
     char* intMinString = "-2147483648";
     char* intMaxString = "2147483647";
-    if (fgets(checkString, 12, input))
+    if (fgets(checkString, 13, input))
     {
-        for (int i = 0; i < strlen(checkString); i++)
+        for (int i = 1; i < strlen(checkString); i++)
         {
             if (!(checkString[i] >= '0' && checkString[i] <= '9') && !(checkString[i] == '-'))
             {
@@ -56,9 +57,9 @@ int main()
         exit(1);
     }
     fseek(input, 0, 0);
-    if (fgets(checkString, 12, input))
+    if (fgets(checkString, 13, input))
     {
-        if (checkString[0] == "-")
+        if (checkString[0] == '-')
         {
             if (strlen(intMinString) < strlen(checkString))
             {
@@ -69,7 +70,7 @@ int main()
             {
                 for (int i = 1; i < strlen(checkString); i++)
                 {
-                    if (intMinString[i] > checkString[i])
+                    if (intMinString[i] < checkString[i])
                     {
                         printf_s("Too small number");
                         exit(1);
@@ -88,7 +89,7 @@ int main()
             {
                 for (int i = 0; i < strlen(checkString); i++)
                 {
-                    if (intMaxString[i] > checkString[i])
+                    if (intMaxString[i] < checkString[i])
                     {
                         printf_s("Too big number");
                         exit(1);
@@ -102,18 +103,18 @@ int main()
     if (!(fscanf_s(input, "%d", &inputDecNumber)))
     {
         perror("No numbers in input file!");
+        exit(1);
     }
-
-    int inputDecNumberBackup = inputDecNumber;
     int count = countingBinDigits(inputDecNumber);
 
-    int* binaryNumber = createBinaryNumber(inputDecNumber);
+    int* binaryNumber = createBinaryNumber(inputDecNumber);//{1, 1, 0}
     if (!(binaryNumber))
     {
         printf_s(MEM_ALL_ERR);
+        exit(1);
     }
 
-    int* digits32BinNumber = (int*)calloc(NUMBER_OF_DIGITS, sizeof(int));
+    int* digits32BinNumber = (int*)calloc(NUMBER_OF_DIGITS, sizeof(int));//0000..0110
     if (!(digits32BinNumber))
     {
         printf_s(MEM_ALL_ERR);
@@ -156,11 +157,11 @@ int countingBinDigits(int decNumber)
     return count;
 }
 
-int* createBinaryNumber(int decNumber)
+int* createBinaryNumber(int decNumber)//6
 {
-    int absDecNumber = abs(decNumber);
-    int binDigitsCount = countingBinDigits(decNumber);
-    int* binaryArray = (int*)calloc(binDigitsCount, sizeof(int));
+    int absDecNumber = abs(decNumber);//6
+    int binDigitsCount = countingBinDigits(decNumber);//6 110
+    int* binaryArray = (int*)calloc(binDigitsCount, sizeof(int));//3
     if (!(binaryArray))
     {
         printf_s(MEM_ALL_ERR);
@@ -181,51 +182,50 @@ int* createBinaryNumber(int decNumber)
     return binaryArray;
 }
 
-void binNumberTransormation(int* finalBinNumber, int* binNumber, int decNumber)
+void binNumberTransormation(int* bytes4BinNumber, int* binNumber, int decNumber)
 {
-    int count = countingBinDigits(decNumber);
-    for (int i = 0; i < count; i++)
+    int count = countingBinDigits(decNumber);//6 110 3 
+    for (int i = 0; i < count; i++)// i = 0, 1, 2
     {
-        finalBinNumber[i + NUMBER_OF_DIGITS - count] = binNumber[i];
+        bytes4BinNumber[i + NUMBER_OF_DIGITS - count] = binNumber[i];//000..00110
     }
 
     if (decNumber < 0)
     {
         for (int i = 0; i < NUMBER_OF_DIGITS; i++)
         {
-            if (finalBinNumber[i] == 0)
+            if (bytes4BinNumber[i] == 0)
             {
-                finalBinNumber[i] = 1;
+                bytes4BinNumber[i] = 1;
             }
             else
             {
-                finalBinNumber[i] = 0;
+                bytes4BinNumber[i] = 0;
             }
         }
 
         for (int i = NUMBER_OF_DIGITS - 1; i >= 0; i--)
         {
-            if (finalBinNumber[i] == 0)
+            if (bytes4BinNumber[i] == 0)
             {
-                finalBinNumber[i] = 1;
+                bytes4BinNumber[i] = 1;
                 break;
             }
             else
             {
-                finalBinNumber[i] = 0;
+                bytes4BinNumber[i] = 0;
             }
         }
     }
 }
 
-int sumDigitsInNumber(int number)
+int sumDigitsInNumber(int number)//5443 вот в этом числе мы можем уместить "10" 544 раза 
 {
     int sum = 0;
-    int lastDigit = 0;
     while (number != 0)
     {
-        sum += (number % 10);
-        number /= 10;
+        sum += (number % 10);//0 + 3 + 4 + 4 + 5
+        number /= 10;//0
     }
     return abs(sum);
 }
