@@ -1,0 +1,8 @@
+﻿  main.c
+  matrix.c
+C:\Users\Admin\Desktop\fuctions_matrix\funcsToMatrix\funcs\matrix.c(142,27): warning C4047: функция: "double **" отличается по уровням косвенного обращения от "double *"
+C:\Users\Admin\Desktop\fuctions_matrix\funcsToMatrix\funcs\matrix.c(142,24): warning C4024: swapTwoLine: различные типы для формального и фактического параметров 1
+C:\Users\Admin\Desktop\fuctions_matrix\funcsToMatrix\funcs\matrix.c(142,38): warning C4047: функция: "double **" отличается по уровням косвенного обращения от "double *"
+C:\Users\Admin\Desktop\fuctions_matrix\funcsToMatrix\funcs\matrix.c(142,35): warning C4024: swapTwoLine: различные типы для формального и фактического параметров 2
+  Создание кода...
+  funcs.vcxproj -> C:\Users\Admin\Desktop\fuctions_matrix\funcsToMatrix\x64\Debug\funcs.exe
