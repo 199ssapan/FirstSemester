@@ -1,0 +1,6 @@
+﻿  ATM.c
+  main.c
+  Создание кода...
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task11\Task11_4\main.c(34): warning C4716: mainMenu: должна возвращать значение
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task11\Task11_4\ATM.c(79): warning C4715: authentication: значение возвращается не при всех путях выполнения
+  Task11_4.vcxproj -> C:\Users\Admin\Desktop\Cprogramms\fromflash\Task11\x64\Debug\Task11_4.exe
