@@ -1,7 +1,2 @@
-﻿  ATM.c
-  main.c
-  Создание кода...
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Task11\Task11_4\ATM.c(83): warning C4715: authentication: значение возвращается не при всех путях выполнения
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Task11\Task11_4\ATM.c(106): warning C4715: getCash: значение возвращается не при всех путях выполнения
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Task11\Task11_4\ATM.c(151): warning C4715: findUser: значение возвращается не при всех путях выполнения
+﻿  main.c
   Task11_4.vcxproj -> C:\Users\Admin\Desktop\Cprogramms\fromflash\Task11\x64\Debug\Task11_4.exe
