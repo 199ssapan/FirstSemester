@@ -85,7 +85,8 @@ int authentication(ATM* atm, char* inputCardNumber, char* inputPassword, int use
 void getCash(ATM* atm, char* userName, int usersCount)
 {
     system("cls");
-    printf_s("How much do you want to get?\n");
+    printf_s("How much do you want to get?\nYour balance is:\t");
+    checkBalance(findUser(atm, usersCount, userName));
     int value = 0;
     scanf_s("%d", &value);
     for (int i = 0; i < usersCount; i++)
@@ -94,7 +95,7 @@ void getCash(ATM* atm, char* userName, int usersCount)
         {
             if (atm->users[i].account - value < 0)
             {
-                printf_s("You don't have enough money to get from ATM!");
+                printf_s("You don't have enough money to get from ATM!\n");
                 system("pause");
                 return;
             }
