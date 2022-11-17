@@ -65,6 +65,24 @@ double** matrixSum(double** firstMatrix, int rowCountFirst, int columnCountFirst
 	return newMatrix;
 }
 
+double** matrixSubstitution(double** firstMatrix, int rowCountFirst, int columnCountFirst, double** secondMatrix, int rowCountSecond, int columnCountSecond)
+{
+	if (rowCountFirst != rowCountSecond || columnCountFirst != columnCountSecond)
+	{
+		printf_s("Wrong size of matrix!");
+		return NULL;
+	}
+	double** newMatrix = allocMatrix(rowCountFirst, columnCountFirst);
+	for (int i = 0; i < rowCountFirst; i++)
+	{
+		for (int j = 0; j < columnCountFirst; j++)
+		{
+			newMatrix[i][j] = firstMatrix[i][j] - secondMatrix[i][j];
+		}
+	}
+	return newMatrix;
+}
+
 double** allocMatrix(int rowCount, int columnCount)
 {
 	double** matrix = (double**)malloc(rowCount * sizeof(double*));
@@ -177,4 +195,120 @@ void swapTwoLine(double** line1, double** line2)
 	double* tmp = *line1;
 	*line1 = *line2;
 	*line2 = tmp;
+}
+
+double** readMatrixFromFile(int rowCount, int columnsCount, FILE* file)
+{
+	fseek(file, 0, 0);
+	double** matrix = allocMatrix(rowCount, columnsCount);
+	for (int i = 0; i < rowCount; i++)
+	{
+		for (int j = 0; j < rowCount; j++)
+		{
+			fscanf_s(file, "%lf", &matrix[i][j]);
+		}
+	}
+	fseek(file, 0, 0);
+	return matrix;
+}
+
+int findCountOfRows(FILE* file)
+{
+	return countLinesInFile(file);
+}
+
+int countLinesInFile(FILE* file)
+{
+	fseek(file, 0, 0);
+	int linesCount = 1;
+	char c;
+	c = fgetc(file);
+	while (c != EOF)
+	{
+		c = fgetc(file);
+		if (c == '\n')
+			linesCount++;
+	}
+	fseek(file, 0, 0);
+	return linesCount;
+}
+
+int findCountOfColumns(FILE* file)
+{
+	fseek(file, 0, 0);
+	char* firstFileString = (char*)malloc(MAX_STR_LEN * sizeof(char));
+	fgets(firstFileString, MAX_STR_LEN, file);
+	firstFileString = removeExtraSpaces(firstFileString);
+	return countSymbols(firstFileString, ' ') + 1;
+	fseek(file, 0, 0);
+}
+
+char* removeExtraSpaces(char* string)
+{
+	int len = strlen(string);
+	if (len == 0) return "";
+	char* stringToReturn = (char*)malloc(len * sizeof(char));
+	for (int i = 0; i < len; i++)
+	{
+		string[i] = string[i] == '\t' ? ' ' : string[i];
+	}
+	int new_i = 0;
+	int flag = 0;
+	for (int i = 0; i < len;i++)
+	{
+		if (string[i] != ' ')
+		{
+			stringToReturn[new_i] = string[i];
+			new_i++;
+			flag = 0;
+		}
+		else if (flag == 1) {}
+		else
+		{
+			stringToReturn[new_i] = string[i];
+			new_i++;
+			flag = 1;
+		}
+	}
+	stringToReturn[new_i] = '\0';
+	return stringToReturn;
+}
+
+void rewritingToFile(FILE* file, char* filename, int linesCount)
+{
+	char** matrix = (char**)malloc(linesCount * sizeof(char*));
+	for (int i = 0; i < linesCount; i++)
+	{
+		matrix[i] = (char*)malloc(MAX_STR_LEN * sizeof(char));
+	}
+	for (int i = 0; i < linesCount; i++)
+	{
+		matrix[i] = removeExtraSpaces(fgets(matrix[i], MAX_STR_LEN, file));
+	}
+	fclose(file);
+	fopen_s(file, filename, "w");
+	for (int i = 0; i < linesCount; i++)
+	{
+		fprintf_s(file, "%s", matrix[i]);
+	}
+	for (int i = 0; i < linesCount; i++)
+	{
+		free(matrix[i]);
+	}
+	free(matrix);
+	return;
+}
+
+int countSymbols(char* string, char symbol)
+{
+	int countSymb = 0;
+	for (int i = 0; i < strlen(string); i++)
+	{
+		if (string[i] == symbol)
+		{
+			countSymb++;
+		}
+	}
+	return countSymb;
+
 }

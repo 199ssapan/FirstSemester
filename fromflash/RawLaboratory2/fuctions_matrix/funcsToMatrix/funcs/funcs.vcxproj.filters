@@ -21,9 +21,15 @@
     <ClCompile Include="matrix.c">
       <Filter>Файлы ресурсов</Filter>
     </ClCompile>
+    <ClCompile Include="checking.c">
+      <Filter>Файлы ресурсов</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="matrix.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="checking.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
