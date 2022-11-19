@@ -203,7 +203,7 @@ double** readMatrixFromFile(int rowCount, int columnsCount, FILE* file)
 	double** matrix = allocMatrix(rowCount, columnsCount);
 	for (int i = 0; i < rowCount; i++)
 	{
-		for (int j = 0; j < rowCount; j++)
+		for (int j = 0; j < columnsCount; j++)
 		{
 			fscanf_s(file, "%lf", &matrix[i][j]);
 		}

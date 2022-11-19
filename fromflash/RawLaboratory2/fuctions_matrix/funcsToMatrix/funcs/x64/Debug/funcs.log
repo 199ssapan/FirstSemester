@@ -1,15 +1,3 @@
-﻿  matrix.c
-C:\Users\Admin\Desktop\Cprogramms\fromflash\RawLaboratory2\fuctions_matrix\funcsToMatrix\funcs\matrix.c(160,27): warning C4047: функция: "double **" отличается по уровням косвенного обращения от "double *"
-C:\Users\Admin\Desktop\Cprogramms\fromflash\RawLaboratory2\fuctions_matrix\funcsToMatrix\funcs\matrix.c(160,24): warning C4024: swapTwoLine: различные типы для формального и фактического параметров 1
-C:\Users\Admin\Desktop\Cprogramms\fromflash\RawLaboratory2\fuctions_matrix\funcsToMatrix\funcs\matrix.c(160,38): warning C4047: функция: "double **" отличается по уровням косвенного обращения от "double *"
-C:\Users\Admin\Desktop\Cprogramms\fromflash\RawLaboratory2\fuctions_matrix\funcsToMatrix\funcs\matrix.c(160,35): warning C4024: swapTwoLine: различные типы для формального и фактического параметров 2
-C:\Users\Admin\Desktop\Cprogramms\fromflash\RawLaboratory2\fuctions_matrix\funcsToMatrix\funcs\matrix.c(248,12): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
-C:\Users\Admin\Desktop\Cprogramms\fromflash\RawLaboratory2\fuctions_matrix\funcsToMatrix\funcs\matrix.c(289,14): warning C4047: функция: "FILE **" отличается по уровням косвенного обращения от "FILE *"
-C:\Users\Admin\Desktop\Cprogramms\fromflash\RawLaboratory2\fuctions_matrix\funcsToMatrix\funcs\matrix.c(289,10): warning C4024: fopen_s: различные типы для формального и фактического параметров 1
-C:\Users\Admin\Desktop\Cprogramms\fromflash\RawLaboratory2\fuctions_matrix\funcsToMatrix\funcs\matrix.c(329,25): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "char **"
-C:\Users\Admin\Desktop\Cprogramms\fromflash\RawLaboratory2\fuctions_matrix\funcsToMatrix\funcs\matrix.c(329,17): warning C4024: fopen_s: различные типы для формального и фактического параметров 2
-C:\Users\Admin\Desktop\Cprogramms\fromflash\RawLaboratory2\fuctions_matrix\funcsToMatrix\funcs\matrix.c(335,14): warning C4047: функция: "FILE **" отличается по уровням косвенного обращения от "FILE *"
-C:\Users\Admin\Desktop\Cprogramms\fromflash\RawLaboratory2\fuctions_matrix\funcsToMatrix\funcs\matrix.c(335,10): warning C4024: fopen_s: различные типы для формального и фактического параметров 1
-C:\Users\Admin\Desktop\Cprogramms\fromflash\RawLaboratory2\fuctions_matrix\funcsToMatrix\funcs\matrix.c(335,24): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "char **"
-C:\Users\Admin\Desktop\Cprogramms\fromflash\RawLaboratory2\fuctions_matrix\funcsToMatrix\funcs\matrix.c(335,16): warning C4024: fopen_s: различные типы для формального и фактического параметров 2
+﻿  main.c
+C:\Users\Admin\Desktop\Cprogramms\fromflash\RawLaboratory2\fuctions_matrix\funcsToMatrix\funcs\main.c(31,11): warning C4477: "printf_s": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "1" имеет тип "double"
   funcs.vcxproj -> C:\Users\Admin\Desktop\Cprogramms\fromflash\RawLaboratory2\fuctions_matrix\funcsToMatrix\x64\Debug\funcs.exe
