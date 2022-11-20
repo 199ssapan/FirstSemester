@@ -1,4 +1,6 @@
 #include "matrix.h"
+#include "mainMenu.h"
+#include "checking.h"
 
 void handWriteMatrix(double** matrix, int rowCount, int columnCount)
 {

@@ -1,4 +1,6 @@
 #include "checking.h"
+#include "mainMenu.h"
+#include "matrix.h"
 
 int isMatrix(FILE* file, char** filename)
 {
@@ -146,7 +148,51 @@ void checkFile(FILE* file, char* filename)
 	if (c == ' ' || c == '\n' || c == '\t') errex("Wrong data! %s", filename);
 	if (c == EOF) errex("No data!");
 	fseek(file, 0, 0);
-	if (isMatrix(file, filename)) errex("There is no matrix! %s", filename);
-	if (isExcessSymbols(file)) errex("Excess symbols in the file! %s", filename);
-	if (isBigNumber(file)) errex("Too big number in the file! %s", filename);
+	if (isMatrix(file, filename)) errex("Please enter the matrix correctly and delete excess symbols\n");
+	if (isExcessSymbols(file)) errex("Excess symbols in the file!");
+	if (isBigNumber(file)) errex("Too big number in the file!");
+}
+
+void useCurrentMatrix(double** matrix, int rowCount, int columnCount, FILE* file1, char* filename1, FILE* file2, char* filename2)
+{
+	printf_s("Do you want to use this matrix for future calculations?\n1. Yes\n2. No\n");
+	char action = _getch();
+	switch (action)
+	{
+	case '1':
+		printf_s("In which file do you want to write this matrix?\n1. 1\n2. 2\n");
+		char f = _getch();
+		switch (f)
+		{
+		case '1':
+			writeToFile(matrix, rowCount, columnCount, file1, filename1);
+			break;
+		case '2':
+			writeToFile(matrix, rowCount, columnCount, file2, filename2);
+			break;
+		}
+	case 2:
+		break;
+	default:
+		break;
+	}
+}
+
+void writeToFile(double** matrix, int rowCount, int columnCount, FILE* file, char* filename)
+{
+	fclose(file);
+	if (fopen_s(&file, filename, "w")) errex("");
+	for (int i = 0; i < rowCount; i++)
+	{
+		for (int j = 0; j < columnCount; j++)
+		{
+			j == columnCount - 1 ? fprintf_s(file, "%lf", matrix[i][j]) : fprintf_s(file, "%lf ", matrix[i][j]);
+		}
+		if (i != rowCount - 1)
+		{
+			fprintf_s(file, "\n");
+		}
+	}
+	fclose(file);
+	if (fopen_s(&file, filename, "r")) errex("");
 }

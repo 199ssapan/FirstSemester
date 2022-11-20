@@ -1,5 +1,7 @@
 #include "mainMenu.h"
-int mainMenu(FILE* file1, FILE* file2)
+#include "checking.h"
+#include "matrix.h"
+int mainMenu(FILE* file1, char* filename1, FILE* file2, char* filename2)
 {
 	int rowCountFirst = findCountOfRows(file1);
 	int columnCountFirst = findCountOfColumns(file1);
@@ -20,18 +22,21 @@ int mainMenu(FILE* file1, FILE* file2)
 	case '1':
 		resultMatrix = matrixSum(firstMatrix, rowCountFirst, columnCountFirst, secondMatrix, rowCountSecond, columnCountSecond);
 		printMatrix(resultMatrix, rowCountFirst, columnCountFirst);
+		useCurrentMatrix(resultMatrix, rowCountFirst, columnCountFirst, file1, filename1, file2, filename2);
 		freeMatrix(resultMatrix, rowCountFirst);
 		system("pause");
 		break;
 	case '2':
 		resultMatrix = matrixSubstitution(firstMatrix, rowCountFirst, columnCountFirst, secondMatrix, rowCountSecond, columnCountSecond);
 		printMatrix(resultMatrix, rowCountFirst, columnCountFirst);
+		useCurrentMatrix(resultMatrix, rowCountFirst, columnCountFirst, file1, filename1, file2, filename2);
 		freeMatrix(resultMatrix, rowCountFirst);
 		system("pause");
 		break;
 	case '3':
 		resultMatrix = multiplyMatrices(firstMatrix, rowCountFirst, columnCountFirst, secondMatrix, rowCountSecond, columnCountSecond);
 		printMatrix(resultMatrix, rowCountFirst, columnCountSecond);
+		useCurrentMatrix(resultMatrix, rowCountFirst, columnCountSecond, file1, filename1, file2, filename2);
 		freeMatrix(resultMatrix, rowCountFirst);
 		system("pause");
 		break;
@@ -43,12 +48,14 @@ int mainMenu(FILE* file1, FILE* file2)
 		case '1':
 			resultMatrix = transpose(firstMatrix, rowCountFirst, columnCountFirst);
 			printMatrix(resultMatrix, columnCountFirst, rowCountFirst);
+			useCurrentMatrix(resultMatrix, columnCountFirst, rowCountFirst, file1, filename1, file2, filename2);
 			freeMatrix(resultMatrix, columnCountFirst);
 			system("pause");
 			break;
 		case '2':
 			resultMatrix = transpose(secondMatrix, rowCountSecond, columnCountSecond);
 			printMatrix(resultMatrix, columnCountSecond, rowCountSecond);
+			useCurrentMatrix(resultMatrix, columnCountSecond, rowCountSecond, file1, filename1, file2, filename2);
 			freeMatrix(resultMatrix, columnCountSecond);
 			system("pause");
 			break;
