@@ -1,3 +1,0 @@
-﻿  main.c
-C:\Users\Admin\Desktop\Cprogramms\fromflash\RawLaboratory2\fuctions_matrix\funcsToMatrix\funcs\main.c(31,11): warning C4477: "printf_s": в строке форматирования "%d" требуется аргумент типа "int", но вариативный аргумент "1" имеет тип "double"
-  funcs.vcxproj -> C:\Users\Admin\Desktop\Cprogramms\fromflash\RawLaboratory2\fuctions_matrix\funcsToMatrix\x64\Debug\funcs.exe

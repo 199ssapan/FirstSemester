@@ -1,0 +1,26 @@
+﻿  checking.c
+C:\Users\Admin\Desktop\Laboratory2\Matrices\checking.c(16,25): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "char **"
+C:\Users\Admin\Desktop\Laboratory2\Matrices\checking.c(16,17): warning C4024: fopen_s: различные типы для формального и фактического параметров 2
+C:\Users\Admin\Desktop\Laboratory2\Matrices\checking.c(22,14): warning C4047: функция: "FILE **" отличается по уровням косвенного обращения от "FILE *"
+C:\Users\Admin\Desktop\Laboratory2\Matrices\checking.c(22,10): warning C4024: fopen_s: различные типы для формального и фактического параметров 1
+C:\Users\Admin\Desktop\Laboratory2\Matrices\checking.c(22,24): warning C4047: функция: "const char *" отличается по уровням косвенного обращения от "char **"
+C:\Users\Admin\Desktop\Laboratory2\Matrices\checking.c(22,16): warning C4024: fopen_s: различные типы для формального и фактического параметров 2
+C:\Users\Admin\Desktop\Laboratory2\Matrices\checking.c(94,34): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Admin\Desktop\Laboratory2\Matrices\checking.c(146,66): warning C4020: errex: слишком много фактических параметров
+C:\Users\Admin\Desktop\Laboratory2\Matrices\checking.c(149,29): warning C4047: функция: "char **" отличается по уровням косвенного обращения от "char *"
+C:\Users\Admin\Desktop\Laboratory2\Matrices\checking.c(149,21): warning C4024: isMatrix: различные типы для формального и фактического параметров 2
+C:\Users\Admin\Desktop\Laboratory2\Matrices\checking.c(149,64): warning C4020: errex: слишком много фактических параметров
+C:\Users\Admin\Desktop\Laboratory2\Matrices\checking.c(150,69): warning C4020: errex: слишком много фактических параметров
+C:\Users\Admin\Desktop\Laboratory2\Matrices\checking.c(151,65): warning C4020: errex: слишком много фактических параметров
+  main.c
+  mainMenu.c
+  matrix.c
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(160,27): warning C4047: функция: "double **" отличается по уровням косвенного обращения от "double *"
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(160,24): warning C4024: swapTwoLine: различные типы для формального и фактического параметров 1
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(160,38): warning C4047: функция: "double **" отличается по уровням косвенного обращения от "double *"
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(160,35): warning C4024: swapTwoLine: различные типы для формального и фактического параметров 2
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(250,12): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(291,14): warning C4047: функция: "FILE **" отличается по уровням косвенного обращения от "FILE *"
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(291,10): warning C4024: fopen_s: различные типы для формального и фактического параметров 1
+  Создание кода...
+  Matrices.vcxproj -> C:\Users\Admin\Desktop\Laboratory2\x64\Debug\Matrices.exe
