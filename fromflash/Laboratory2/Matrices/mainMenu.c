@@ -21,23 +21,32 @@ int mainMenu(FILE* file1, char* filename1, FILE* file2, char* filename2)
 	{
 	case '1':
 		resultMatrix = matrixSum(firstMatrix, rowCountFirst, columnCountFirst, secondMatrix, rowCountSecond, columnCountSecond);
-		printMatrix(resultMatrix, rowCountFirst, columnCountFirst);
-		useCurrentMatrix(resultMatrix, rowCountFirst, columnCountFirst, file1, filename1, file2, filename2);
-		freeMatrix(resultMatrix, rowCountFirst);
+		if (resultMatrix)
+		{
+			printMatrix(resultMatrix, rowCountFirst, columnCountFirst);
+			useCurrentMatrix(resultMatrix, rowCountFirst, columnCountFirst, file1, filename1, file2, filename2);
+			freeMatrix(resultMatrix, rowCountFirst);
+		}
 		system("pause");
 		break;
 	case '2':
 		resultMatrix = matrixSubstitution(firstMatrix, rowCountFirst, columnCountFirst, secondMatrix, rowCountSecond, columnCountSecond);
-		printMatrix(resultMatrix, rowCountFirst, columnCountFirst);
-		useCurrentMatrix(resultMatrix, rowCountFirst, columnCountFirst, file1, filename1, file2, filename2);
-		freeMatrix(resultMatrix, rowCountFirst);
+		if (resultMatrix)
+		{
+		    printMatrix(resultMatrix, rowCountFirst, columnCountFirst);
+			useCurrentMatrix(resultMatrix, rowCountFirst, columnCountFirst, file1, filename1, file2, filename2);
+			freeMatrix(resultMatrix, rowCountFirst);
+		}
 		system("pause");
 		break;
 	case '3':
 		resultMatrix = multiplyMatrices(firstMatrix, rowCountFirst, columnCountFirst, secondMatrix, rowCountSecond, columnCountSecond);
-		printMatrix(resultMatrix, rowCountFirst, columnCountSecond);
-		useCurrentMatrix(resultMatrix, rowCountFirst, columnCountSecond, file1, filename1, file2, filename2);
-		freeMatrix(resultMatrix, rowCountFirst);
+		if (resultMatrix)
+		{
+			printMatrix(resultMatrix, rowCountFirst, columnCountSecond);
+			useCurrentMatrix(resultMatrix, rowCountFirst, columnCountSecond, file1, filename1, file2, filename2);
+			freeMatrix(resultMatrix, rowCountFirst);
+		}
 		system("pause");
 		break;
 	case '4':
@@ -70,14 +79,15 @@ int mainMenu(FILE* file1, char* filename1, FILE* file2, char* filename2)
 		double det;
 		switch (action)
 		{
+			bool isDetFlag = 0;
 		case '1':
-			det = getDeterminant(firstMatrix, rowCountFirst, columnCountFirst);
-			isDet == 1 ? printf_s("Determinant is %lf\n", det) : printf_s("Not square matrix!\nNot possible to find determinant\n");
+			det = getDeterminant(firstMatrix, rowCountFirst, columnCountFirst, &isDetFlag);
+			 isDetFlag == 1 ? printf_s("Determinant is %lf\n", det) : printf_s("Not square matrix!\nNot possible to find determinant\n");
 			system("pause");
 			break;
 		case '2':
-			det = getDeterminant(secondMatrix, rowCountSecond, columnCountSecond);
-			isDet == 1 ? printf_s("Determinant is %lf\n", det) : printf_s("Not square matrix!\nNot possible to find determinant\n");
+			det = getDeterminant(secondMatrix, rowCountSecond, columnCountSecond, &isDetFlag);
+			isDetFlag == 1 ? printf_s("Determinant is %lf\n", det) : printf_s("Not square matrix!\nNot possible to find determinant\n");
 			system("pause");
 			break;
 		default:

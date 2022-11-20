@@ -1,0 +1,12 @@
+﻿  matrix.c
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(147,1): warning C4029: объявленный список формальных параметров отличается от объявления
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(163,27): warning C4047: функция: "double **" отличается по уровням косвенного обращения от "double *"
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(163,24): warning C4024: swapTwoLine: различные типы для формального и фактического параметров 1
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(163,38): warning C4047: функция: "double **" отличается по уровням косвенного обращения от "double *"
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(163,35): warning C4024: swapTwoLine: различные типы для формального и фактического параметров 2
+  Создание кода
+  2 of 33 functions ( 6.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    6 functions had inline decision re-evaluated but remain unchanged
+  Создание кода завершено
+  Matrices.vcxproj -> C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\x64\Release\Matrices.exe

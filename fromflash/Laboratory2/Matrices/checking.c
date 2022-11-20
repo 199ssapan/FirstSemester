@@ -145,7 +145,7 @@ int checkStringToWords(char* string)
 void checkFile(FILE* file, char* filename)
 {
 	char c = fgetc(file);
-	if (c == ' ' || c == '\n' || c == '\t') errex("Wrong data! %s", filename);
+	if (c == ' ' || c == '\n' || c == '\t') errex("Wrong data!");
 	if (c == EOF) errex("No data!");
 	fseek(file, 0, 0);
 	if (isMatrix(file, filename)) errex("Please enter the matrix correctly and delete excess symbols\n");
@@ -195,4 +195,89 @@ void writeToFile(double** matrix, int rowCount, int columnCount, FILE* file, cha
 	}
 	fclose(file);
 	if (fopen_s(&file, filename, "r")) errex("");
+}
+
+int countLinesInFile(FILE* file)
+{
+	fseek(file, 0, 0);
+	int linesCount = 1;
+	char c;
+	c = fgetc(file);
+	while (c != EOF)
+	{
+		c = fgetc(file);
+		if (c == '\n')
+			linesCount++;
+	}
+	fseek(file, 0, 0);
+	return linesCount;
+}
+
+char* removeExtraSpaces(char* string)
+{
+	int len = strlen(string);
+	if (len == 0) return "";
+	char* stringToReturn = (char*)malloc(len * sizeof(char));
+	for (int i = 0; i < len; i++)
+	{
+		string[i] = string[i] == '\t' ? ' ' : string[i];
+	}
+	int new_i = 0;
+	int flag = 0;
+	for (int i = 0; i < len;i++)
+	{
+		if (string[i] != ' ')
+		{
+			stringToReturn[new_i] = string[i];
+			new_i++;
+			flag = 0;
+		}
+		else if (flag == 1) {}
+		else
+		{
+			stringToReturn[new_i] = string[i];
+			new_i++;
+			flag = 1;
+		}
+	}
+	stringToReturn[new_i] = '\0';
+	return stringToReturn;
+}
+
+int countSymbols(char* string, char symbol)
+{
+	int countSymb = 0;
+	for (int i = 0; i < strlen(string); i++)
+	{
+		if (string[i] == symbol)
+		{
+			countSymb++;
+		}
+	}
+	return countSymb;
+}
+
+void rewritingToFile(FILE* file, char* filename, int linesCount)
+{
+	char** matrix = (char**)malloc(linesCount * sizeof(char*));
+	for (int i = 0; i < linesCount; i++)
+	{
+		matrix[i] = (char*)malloc(MAX_STR_LEN * sizeof(char));
+	}
+	for (int i = 0; i < linesCount; i++)
+	{
+		matrix[i] = removeExtraSpaces(fgets(matrix[i], MAX_STR_LEN, file));
+	}
+	fclose(file);
+	fopen_s(file, filename, "w");
+	for (int i = 0; i < linesCount; i++)
+	{
+		fprintf_s(file, "%s", matrix[i]);
+	}
+	for (int i = 0; i < linesCount; i++)
+	{
+		free(matrix[i]);
+	}
+	free(matrix);
+	return;
 }
