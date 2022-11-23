@@ -2,7 +2,7 @@
 #include "mainMenu.h"
 #include "matrix.h"
 
-int isMatrix(FILE* file, char** filename)
+int isMatrix(FILE* file, char* filename)
 {
 	int linesCount = countLinesInFile(file);
 	char** matrix = (char**)malloc(linesCount * sizeof(char*));
@@ -153,7 +153,7 @@ void checkFile(FILE* file, char* filename)
 	if (isBigNumber(file)) errex("Too big number in the file!");
 }
 
-void useCurrentMatrix(double** matrix, int rowCount, int columnCount, FILE* file1, char* filename1, FILE* file2, char* filename2)
+void useCurrentMatrix(Matrix* matrix, FILE* file1, char* filename1, FILE* file2, char* filename2)
 {
 	printf_s("Do you want to use this matrix for future calculations?\n1. Yes\n2. No\n");
 	char action = _getch();
@@ -165,10 +165,10 @@ void useCurrentMatrix(double** matrix, int rowCount, int columnCount, FILE* file
 		switch (f)
 		{
 		case '1':
-			writeToFile(matrix, rowCount, columnCount, file1, filename1);
+			writeToFile(matrix, file1, filename1);
 			break;
 		case '2':
-			writeToFile(matrix, rowCount, columnCount, file2, filename2);
+			writeToFile(matrix, file2, filename2);
 			break;
 		}
 	case 2:
@@ -178,17 +178,17 @@ void useCurrentMatrix(double** matrix, int rowCount, int columnCount, FILE* file
 	}
 }
 
-void writeToFile(double** matrix, int rowCount, int columnCount, FILE* file, char* filename)
+void writeToFile(Matrix* matrix, FILE* file, char* filename)
 {
 	fclose(file);
 	if (fopen_s(&file, filename, "w")) errex("");
-	for (int i = 0; i < rowCount; i++)
+	for (int i = 0; i < matrix->rows; i++)
 	{
-		for (int j = 0; j < columnCount; j++)
+		for (int j = 0; j < matrix->columns; j++)
 		{
-			j == columnCount - 1 ? fprintf_s(file, "%lf", matrix[i][j]) : fprintf_s(file, "%lf ", matrix[i][j]);
+			j == matrix->columns - 1 ? fprintf_s(file, "%lf", matrix->data[i][j]) : fprintf_s(file, "%lf ", matrix->data[i][j]);
 		}
-		if (i != rowCount - 1)
+		if (i != matrix->rows - 1)
 		{
 			fprintf_s(file, "\n");
 		}

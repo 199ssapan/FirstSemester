@@ -2,93 +2,97 @@
 #include "mainMenu.h"
 #include "checking.h"
 
-void handWriteMatrix(double** matrix, int rowCount, int columnCount)
+void handWriteMatrix(Matrix* matrix)
 {
-	for (int i = 0; i < rowCount; i++)
+	for (int i = 0; i < matrix->rows; i++)
 	{
-		for (int j = 0; j < columnCount; j++)
+		for (int j = 0; j < matrix->columns; j++)
 		{
-			scanf_s("%lf", &matrix[i][j]);
+			scanf_s("%lf", &matrix->data[i][j]);
 		}
 	}
 }
-double** multiplyMatrices(double** firstMatrix, int rowCountFirst, int columnCountFirst, double** secondMatrix, int rowCountSecond, int columnCountSecond)
+Matrix* multiplyMatrices(Matrix* firstMatrix, Matrix* secondMatrix)
 {
-	if (columnCountFirst != rowCountSecond)
+	if (firstMatrix->columns != secondMatrix->rows)
 	{
 		printf_s("Wrong size of matrix!\n");
 		return NULL;
 	}
-	double** newMatrix = allocMatrix(rowCountFirst, columnCountSecond);
-	for (int i = 0; i < rowCountFirst; i++)
+	Matrix resultMatrix;
+	allocMatrix(&resultMatrix, firstMatrix->rows, secondMatrix->columns);
+	for (int i = 0; i < firstMatrix->rows; i++)
 	{
-		for (int j = 0; j < columnCountSecond; j++)
+		for (int j = 0; j < secondMatrix->columns; j++)
 		{
 			double sum = 0.0;
-			for (int k = 0; k < columnCountFirst; k++)
+			for (int k = 0; k < firstMatrix->columns; k++)
 			{
-				sum += (firstMatrix[i][k] * secondMatrix[k][j]);
+				sum += (firstMatrix->data[i][k] * secondMatrix->data[k][j]);
 			}
-			newMatrix[i][j] = sum;
+			resultMatrix.data[i][j] = sum;
 		}
 	}
-	return newMatrix;
+	return &resultMatrix;
 }
 
-double** transpose(double** matrixToTranspose, int rowCount, int columnCount)
+Matrix* transpose(Matrix* matrixToTranspose)
 {
-	int newMatrixRows = columnCount;
-	int newMatrixColumns = rowCount;
-	double** newMatrix = allocMatrix(newMatrixRows, newMatrixColumns);
-	for (int i = 0; i < rowCount; i++)
+	int newMatrixRows = matrixToTranspose->columns;
+	int newMatrixColumns = matrixToTranspose->rows;
+	Matrix newMatrix;
+	allocMatrix(&newMatrix, newMatrixRows, newMatrixColumns);
+	for (int i = 0; i < matrixToTranspose->rows; i++)
 	{
-		for (int j = 0; j < columnCount; j++)
+		for (int j = 0; j < matrixToTranspose->columns; j++)
 		{
-			newMatrix[j][i] = matrixToTranspose[i][j];
+			newMatrix.data[j][i] = matrixToTranspose->data[i][j];
 		}
 	}
-	return newMatrix;
+	return &newMatrix;
 }
 
-double** matrixSum(double** firstMatrix, int rowCountFirst, int columnCountFirst, double** secondMatrix, int rowCountSecond, int columnCountSecond)
+Matrix* matrixSum(Matrix* firstMatrix, Matrix* secondMatrix)
 {
-	if (rowCountFirst != rowCountSecond || columnCountFirst != columnCountSecond)
+	if (firstMatrix->rows != secondMatrix->rows || firstMatrix->columns != secondMatrix->columns)
 	{
 		printf_s("Wrong size of matrix!\n");
 		return NULL;
 	}
-	double** newMatrix = allocMatrix(rowCountFirst, columnCountFirst);
-	for (int i = 0; i < rowCountFirst; i++)
+	Matrix newMatrix;
+	allocMatrix(&newMatrix, firstMatrix->rows, firstMatrix->columns);
+	for (int i = 0; i < firstMatrix->rows; i++)
 	{
-		for (int j = 0; j < columnCountFirst; j++)
+		for (int j = 0; j < firstMatrix->columns; j++)
 		{
-			newMatrix[i][j] = firstMatrix[i][j] + secondMatrix[i][j];
+			newMatrix.data[i][j] = firstMatrix->data[i][j] + secondMatrix->data[i][j];
 		}
 	}
-	return newMatrix;
+	return &newMatrix;
 }
 
-double** matrixSubstitution(double** firstMatrix, int rowCountFirst, int columnCountFirst, double** secondMatrix, int rowCountSecond, int columnCountSecond)
+Matrix* matrixSubstitution(Matrix* firstMatrix, Matrix* secondMatrix)
 {
-	if (rowCountFirst != rowCountSecond || columnCountFirst != columnCountSecond)
+	if (firstMatrix->rows != secondMatrix->rows || firstMatrix->columns != secondMatrix->columns)
 	{
 		printf_s("Wrong size of matrix!\n");
 		return NULL;
 	}
-	double** newMatrix = allocMatrix(rowCountFirst, columnCountFirst);
-	for (int i = 0; i < rowCountFirst; i++)
+	Matrix newMatrix;
+	allocMatrix(&newMatrix, firstMatrix->rows, firstMatrix->columns);
+	for (int i = 0; i < firstMatrix->rows; i++)
 	{
-		for (int j = 0; j < columnCountFirst; j++)
+		for (int j = 0; j < firstMatrix->columns; j++)
 		{
-			newMatrix[i][j] = firstMatrix[i][j] - secondMatrix[i][j];
+			newMatrix.data[i][j] = firstMatrix->data[i][j] - secondMatrix->data[i][j];
 		}
 	}
-	return newMatrix;
+	return &newMatrix;
 }
 
-double** allocMatrix(int rowCount, int columnCount)
+void allocMatrix(Matrix* matrix, unsigned rowCount, unsigned columnCount)
 {
-	double** matrix = (double**)malloc(rowCount * sizeof(double*));
+	matrix->data = (double**)malloc(rowCount * sizeof(double*));
 	if (matrix == NULL)
 	{
 		perror("");
@@ -96,94 +100,90 @@ double** allocMatrix(int rowCount, int columnCount)
 	}
 	for (int i = 0; i < rowCount; i++)
 	{
-		matrix[i] = (double*)malloc(columnCount * sizeof(double));
-		if (!(matrix[i]))
-		{
-			for (int j = i; j >= 0; j--)
-			{
-				free(matrix[j]);
-			}
-			perror("");
-			free(matrix);
-			exit(1);
-		}
+		matrix->data[i] = (double*)malloc(columnCount * sizeof(double));
 	}
-	return matrix;
+	matrix->rows = rowCount;
+	matrix->columns = columnCount;
+	matrix->det = 0.0;
+	matrix->hasDet = 0;
 }
-void printMatrix(double** matrix, int rowCount, int columnCount)
+void printMatrix(Matrix* matrix)
 {
-	for (int i = 0; i < rowCount; i++)
+	for (int i = 0; i < matrix->rows; i++)
 	{
-		for (int j = 0; j < columnCount; j++)
+		for (int j = 0; j < matrix->columns; j++)
 		{
-			printf_s("%.2f\t", matrix[i][j]);
+			printf_s("%10.2f\t", matrix->data[i][j]);
 		}
 		printf_s("\n");
 	}
 	printf_s("\n");
 }
-void fillInMatrixRandom(double** matrix, int rowCount, int columnCount)
+void fillInMatrixRandom(Matrix* matrix)
 {
 	srand((unsigned)time(0));
-	for (int i = 0; i < rowCount; i++)
+	for (int i = 0; i < matrix->rows; i++)
 	{
-		for (int j = 0; j < columnCount; j++)
+		for (int j = 0; j < matrix->columns; j++)
 		{
 			double tmp = (double)(rand() % 11 + 1);
-			matrix[i][j] = tmp;
+			matrix->data[i][j] = tmp;
 		}
 	}
 }
 
-void freeMatrix(double** matrix, int rowCount)
+void freeMatrix(Matrix* matrix)
 {
-	for (int i = 0; i < rowCount; i++)
+	for (int i = 0; i < matrix->rows; i++)
 	{
-		free(matrix[i]);
+		free(matrix->data[i]);
 	}
-	free(matrix);
 }
-double getDeterminant(double** matrix, int rowCount, int columnCount, bool* detFlag)
+void getDeterminant(Matrix* matrix)
 {
-	if (rowCount != columnCount)
+	if (matrix->hasDet == 1.0) return;
+	if (matrix->rows != matrix->columns)
 	{
-		*detFlag = 0;
-		return 0.0;
+		matrix->hasDet = 0;
+		matrix->det = 0.0;
+		return;
 	}
 	double sign = 1.0;
-	for (int i = 0; i < rowCount - 1; i++)
+	for (int i = 0; i < matrix->rows - 1; i++)
 	{
 
-		if (matrix[i][i] == 0.0)
+		if (matrix->data[i][i] == 0.0)
 		{
-			for (int k = i; k < rowCount; k++)
+			for (int k = i; k < matrix->rows; k++)
 			{
-				if (matrix[k][i] != 0.0)
+				if (matrix->data[k][i] != 0.0)
 				{
-					swapTwoLine(matrix[k], matrix[i]);
+					swapTwoLine(matrix->data[k], matrix->data[i]);
 					sign = sign == 1.0 ? -1.0 : 1.0;
 					break;
 				}
 			}
-			if (matrix[i][i] == 0.0)
+			if (matrix->data[i][i] == 0.0)
 			{
-				*detFlag = 1;
-				return 0.0;
+				matrix->hasDet = 1;
+				matrix->det = 0.0;
+				return;
 			}
 		}
-		for (int k = i + 1; k < rowCount; k++)
+		for (int k = i + 1; k < matrix->rows; k++)
 		{
-			double coeff = (matrix[k][i] / matrix[i][i]);
-			multAndSub(matrix[i], matrix[k], coeff, rowCount);
+			double coeff = (matrix->data[k][i] / matrix->data[i][i]);
+			multAndSub(matrix->data[i], matrix->data[k], coeff, matrix->rows);
 		}
 	}
-	double det = 1.0;
-	for (int i = 0, j = 0; i < rowCount; i++, j++)
+	matrix->det = 1.0;
+	for (int i = 0, j = 0; i < matrix->rows; i++, j++)
 	{
-		det *= matrix[i][j];
+		matrix->det *= matrix->data[i][j];
 	}
-	*detFlag = 1;
-	return det * sign;
+	matrix->hasDet = 1;
+	matrix->det = matrix->det * sign;
+	return;
 }
 
 void multAndSub(double* firstArr, double* secondArr, double coef, int len)
@@ -202,19 +202,17 @@ void swapTwoLine(double** line1, double** line2)
 	*line2 = tmp;
 }
 
-double** readMatrixFromFile(int rowCount, int columnsCount, FILE* file)
+void readMatrixFromFile(Matrix* matrix, FILE* file)
 {
 	fseek(file, 0, 0);
-	double** matrix = allocMatrix(rowCount, columnsCount);
-	for (int i = 0; i < rowCount; i++)
+	for (int i = 0; i < matrix->rows; i++)
 	{
-		for (int j = 0; j < columnsCount; j++)
+		for (int j = 0; j < matrix->columns; j++)
 		{
-			fscanf_s(file, "%lf", &matrix[i][j]);
+			fscanf_s(file, "%lf", &matrix->data[i][j]);
 		}
 	}
 	fseek(file, 0, 0);
-	return matrix;
 }
 
 int findCountOfRows(FILE* file)
@@ -230,4 +228,11 @@ int findCountOfColumns(FILE* file)
 	firstFileString = removeExtraSpaces(firstFileString);
 	return countSymbols(firstFileString, ' ') + 1;
 	fseek(file, 0, 0);
+}
+
+void dswap(double* first, double* second)
+{
+	double tmp = *first;
+	*first = *second;
+	*second = tmp;
 }

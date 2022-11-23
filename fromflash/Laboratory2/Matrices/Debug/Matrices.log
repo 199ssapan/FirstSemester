@@ -1,0 +1,70 @@
+﻿  checking.c
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\checking.c(24,14): warning C4047: функция: "FILE **" отличается по уровням косвенного обращения от "FILE *"
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\checking.c(24,10): warning C4024: fopen_s: различные типы для формального и фактического параметров 1
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\checking.c(55,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\checking.c(98,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\checking.c(125,3): error C4996: 'strncpy': This function or variable may be unsafe. Consider using strncpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\checking.c(185,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\checking.c(187,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\checking.c(250,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\checking.c(272,14): warning C4047: функция: "FILE **" отличается по уровням косвенного обращения от "FILE *"
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\checking.c(272,10): warning C4024: fopen_s: различные типы для формального и фактического параметров 1
+  main.c
+  mainMenu.c
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\mainMenu.c(30,30): warning C4020: printMatrix: слишком много фактических параметров
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\mainMenu.c(31,48): warning C4047: функция: "FILE *" отличается по уровням косвенного обращения от "int"
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\mainMenu.c(31,35): warning C4024: useCurrentMatrix: различные типы для формального и фактического параметров 2
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\mainMenu.c(31,66): warning C4047: функция: "char *" отличается по уровням косвенного обращения от "int"
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\mainMenu.c(31,50): warning C4024: useCurrentMatrix: различные типы для формального и фактического параметров 3
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\mainMenu.c(31,86): warning C4020: useCurrentMatrix: слишком много фактических параметров
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\mainMenu.c(32,29): warning C4020: freeMatrix: слишком много фактических параметров
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\mainMenu.c(40,33): warning C4020: printMatrix: слишком много фактических параметров
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\mainMenu.c(41,48): warning C4047: функция: "FILE *" отличается по уровням косвенного обращения от "int"
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\mainMenu.c(41,35): warning C4024: useCurrentMatrix: различные типы для формального и фактического параметров 2
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\mainMenu.c(41,66): warning C4047: функция: "char *" отличается по уровням косвенного обращения от "int"
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\mainMenu.c(41,50): warning C4024: useCurrentMatrix: различные типы для формального и фактического параметров 3
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\mainMenu.c(41,86): warning C4020: useCurrentMatrix: слишком много фактических параметров
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\mainMenu.c(42,29): warning C4020: freeMatrix: слишком много фактических параметров
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\mainMenu.c(50,30): warning C4020: printMatrix: слишком много фактических параметров
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\mainMenu.c(51,48): warning C4047: функция: "FILE *" отличается по уровням косвенного обращения от "int"
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\mainMenu.c(51,35): warning C4024: useCurrentMatrix: различные типы для формального и фактического параметров 2
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\mainMenu.c(51,67): warning C4047: функция: "char *" отличается по уровням косвенного обращения от "int"
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\mainMenu.c(51,50): warning C4024: useCurrentMatrix: различные типы для формального и фактического параметров 3
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\mainMenu.c(51,87): warning C4020: useCurrentMatrix: слишком много фактических параметров
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\mainMenu.c(52,29): warning C4020: freeMatrix: слишком много фактических параметров
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\mainMenu.c(69,44): warning C4020: transpose: слишком много фактических параметров
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\mainMenu.c(70,30): warning C4020: printMatrix: слишком много фактических параметров
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\mainMenu.c(83,10): warning C4101: det: неиспользованная локальная переменная
+  matrix.c
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(7,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(9,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(24,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(26,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(29,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(45,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(47,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(64,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(66,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(83,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(85,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(101,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(122,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(124,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(135,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(137,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(147,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(163,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(168,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(172,33): warning C4047: функция: "double **" отличается по уровням косвенного обращения от "double *"
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(172,30): warning C4024: swapTwoLine: различные типы для формального и фактического параметров 1
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(172,50): warning C4047: функция: "double **" отличается по уровням косвенного обращения от "double *"
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(172,47): warning C4024: swapTwoLine: различные типы для формального и фактического параметров 2
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(184,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(191,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(219,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(221,21): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода...
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(36): warning C4172: возвращение адреса локальной или временной переменной : resultMatrix
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(90): warning C4172: возвращение адреса локальной или временной переменной : newMatrix
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(52): warning C4172: возвращение адреса локальной или временной переменной : newMatrix
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(71): warning C4172: возвращение адреса локальной или временной переменной : newMatrix

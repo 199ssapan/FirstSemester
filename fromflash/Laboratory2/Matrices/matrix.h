@@ -8,19 +8,30 @@
 
 #define MAX_STR_LEN 100
 #define bool char
-double** allocMatrix(int rowCount, int columnCount);
-double** transpose(double** matrixToTranspose, int rowCount, int columnCount);
-double** matrixSum(double** firstMatrix, int rowCountFirst, int columnCountFirst, double** secondMatrix, int rowCountSecond, int columnCountSecond);
-void printMatrix(double** matrix, int rowCount, int columnCount);
-void fillInMatrixRandom(double** matrix, int rowCount, int columnCount);
-double** multiplyMatrices(double** firstMatrix, int rowCountFirst, int columnCountFirst, double** secondMatrix, int rowCountSecond, int columnCountSecond);
-void handWriteMatrix(double** matrix, int rowCount, int columnCount);
-double getDeterminant(double** matrix, int rowCount, int columnCount);
+
+typedef struct Matrix
+{
+    double** data;
+    unsigned int rows;
+    unsigned int columns;
+    double det;
+    bool hasDet;
+
+}Matrix;
+
+void handWriteMatrix(Matrix* matrix);
+Matrix* multiplyMatrices(Matrix* firstMatrix, Matrix* secondMatrix);
+Matrix* transpose(Matrix* matrixToTranspose);
+Matrix* matrixSum(Matrix* firstMatrix, Matrix* secondMatrix);
+Matrix* matrixSubstitution(Matrix* firstMatrix, Matrix* secondMatrix);
+void allocMatrix(Matrix* matrix, unsigned rowCount, unsigned columnCount);
+void printMatrix(Matrix* matrix);
+void fillInMatrixRandom(Matrix* matrix);
+void freeMatrix(Matrix* matrix);
+void getDeterminant(Matrix* matrix);
 void multAndSub(double* firstArr, double* secondArr, double coef, int len);
 void swapTwoLine(double** line1, double** line2);
-void freeMatrix(double** matrix, int rowCount);
-double** readMatrixFromFile(int rowCount, int columnsCount, FILE* file);
-double** matrixSubstitution(double** firstMatrix, int rowCountFirst, int columnCountFirst, double** secondMatrix, int rowCountSecond, int columnCountSecond);
-int findCountOfColumns(FILE* file);
+void readMatrixFromFile(Matrix* matrix, FILE* file);
 int findCountOfRows(FILE* file);
+int findCountOfColumns(FILE* file);
 

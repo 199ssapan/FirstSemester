@@ -3,24 +3,28 @@
 #include "matrix.h"
 int mainMenu(FILE* file1, char* filename1, FILE* file2, char* filename2)
 {
+	Matrix firstMatrix;
+	Matrix secondMatrix;
 	int rowCountFirst = findCountOfRows(file1);
 	int columnCountFirst = findCountOfColumns(file1);
 	int rowCountSecond = findCountOfRows(file2);
 	int columnCountSecond = findCountOfColumns(file2);
-	double** firstMatrix = readMatrixFromFile(rowCountFirst, columnCountFirst, file1);
-	double** secondMatrix = readMatrixFromFile(rowCountSecond, columnCountSecond, file2);
+	allocMatrix(&firstMatrix, rowCountFirst, columnCountFirst);
+	allocMatrix(&secondMatrix, rowCountSecond, columnCountSecond);
+	readMatrixFromFile(&firstMatrix, file1);
+	readMatrixFromFile(&secondMatrix, file2);
 	system("cls");
 	printf_s("First matrix\n");
-	printMatrix(firstMatrix, rowCountFirst, columnCountFirst);
+	printMatrix(&firstMatrix);
 	printf_s("Second matrix\n");
-	printMatrix(secondMatrix, rowCountSecond, columnCountSecond);
+	printMatrix(&secondMatrix);
 	printf_s("1. Sum\n2. Substitution\n3. Multiplication\n4. Transposition\n5. Find determinant\n6. Exit\n");
-	double** resultMatrix;
+	Matrix* resultMatrix;
 	char action = _getch();
 	switch (action)
 	{
 	case '1':
-		resultMatrix = matrixSum(firstMatrix, rowCountFirst, columnCountFirst, secondMatrix, rowCountSecond, columnCountSecond);
+		resultMatrix = matrixSum(&firstMatrix, &secondMatrix);
 		if (resultMatrix)
 		{
 			printMatrix(resultMatrix, rowCountFirst, columnCountFirst);
@@ -30,7 +34,7 @@ int mainMenu(FILE* file1, char* filename1, FILE* file2, char* filename2)
 		system("pause");
 		break;
 	case '2':
-		resultMatrix = matrixSubstitution(firstMatrix, rowCountFirst, columnCountFirst, secondMatrix, rowCountSecond, columnCountSecond);
+		resultMatrix = matrixSubstitution(&firstMatrix, &secondMatrix);
 		if (resultMatrix)
 		{
 		    printMatrix(resultMatrix, rowCountFirst, columnCountFirst);
@@ -40,7 +44,7 @@ int mainMenu(FILE* file1, char* filename1, FILE* file2, char* filename2)
 		system("pause");
 		break;
 	case '3':
-		resultMatrix = multiplyMatrices(firstMatrix, rowCountFirst, columnCountFirst, secondMatrix, rowCountSecond, columnCountSecond);
+		resultMatrix = multiplyMatrices(&firstMatrix, &secondMatrix);
 		if (resultMatrix)
 		{
 			printMatrix(resultMatrix, rowCountFirst, columnCountSecond);
@@ -55,17 +59,17 @@ int mainMenu(FILE* file1, char* filename1, FILE* file2, char* filename2)
 		switch (action)
 		{
 		case '1':
-			resultMatrix = transpose(firstMatrix, rowCountFirst, columnCountFirst);
-			printMatrix(resultMatrix, columnCountFirst, rowCountFirst);
-			useCurrentMatrix(resultMatrix, columnCountFirst, rowCountFirst, file1, filename1, file2, filename2);
-			freeMatrix(resultMatrix, columnCountFirst);
+			resultMatrix = transpose(&firstMatrix);
+			printMatrix(resultMatrix);
+			useCurrentMatrix(resultMatrix, file1, filename1, file2, filename2);
+			freeMatrix(resultMatrix);
 			system("pause");
 			break;
 		case '2':
-			resultMatrix = transpose(secondMatrix, rowCountSecond, columnCountSecond);
+			resultMatrix = transpose(&secondMatrix, rowCountSecond, columnCountSecond);
 			printMatrix(resultMatrix, columnCountSecond, rowCountSecond);
-			useCurrentMatrix(resultMatrix, columnCountSecond, rowCountSecond, file1, filename1, file2, filename2);
-			freeMatrix(resultMatrix, columnCountSecond);
+			useCurrentMatrix(resultMatrix, file1, filename1, file2, filename2);
+			freeMatrix(resultMatrix);
 			system("pause");
 			break;
 		default:
@@ -79,15 +83,14 @@ int mainMenu(FILE* file1, char* filename1, FILE* file2, char* filename2)
 		double det;
 		switch (action)
 		{
-			bool isDetFlag = 0;
 		case '1':
-			det = getDeterminant(firstMatrix, rowCountFirst, columnCountFirst, &isDetFlag);
-			 isDetFlag == 1 ? printf_s("Determinant is %lf\n", det) : printf_s("Not square matrix!\nNot possible to find determinant\n");
+			getDeterminant(&firstMatrix);
+			firstMatrix.hasDet == 0.0 ? printf_s("Matrix has no detereminant!\n") : printf_s("Determinant is %lf", firstMatrix.det);
 			system("pause");
 			break;
 		case '2':
-			det = getDeterminant(secondMatrix, rowCountSecond, columnCountSecond, &isDetFlag);
-			isDetFlag == 1 ? printf_s("Determinant is %lf\n", det) : printf_s("Not square matrix!\nNot possible to find determinant\n");
+			secondMatrix.hasDet == 0.0 ? printf_s("Matrix has no detereminant!\n") : printf_s("Determinant is %lf", secondMatrix.det);
+			getDeterminant(&secondMatrix);
 			system("pause");
 			break;
 		default:
@@ -96,15 +99,15 @@ int mainMenu(FILE* file1, char* filename1, FILE* file2, char* filename2)
 		}
 		break;
 	case '6':
-		freeMatrix(firstMatrix, rowCountFirst);
-		freeMatrix(secondMatrix, rowCountSecond);
+		freeMatrix(&firstMatrix);
+		freeMatrix(&secondMatrix);
 		return 0;
 		break;
 	default:
 		printf_s("Wrong command!\n");
 		system("pause");
 	}
-	freeMatrix(firstMatrix, rowCountFirst);
-	freeMatrix(secondMatrix, rowCountSecond);
+	freeMatrix(&firstMatrix);
+	freeMatrix(&secondMatrix);
 	return 1;
 }
