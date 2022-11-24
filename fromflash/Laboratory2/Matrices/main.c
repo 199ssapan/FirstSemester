@@ -10,9 +10,7 @@ int main()
 	if (fopen_s(&file2, filename2, "r")) errex("");
 	checkFile(file1, filename1);
 	checkFile(file2, filename2);
-
-
-	while (mainMenu(file1, filename1, file2, filename2)) {};
+	mainMenu(file1, filename1, file2, filename2);
 	printf_s("Good Bye!\n");
 	return 0;
 }

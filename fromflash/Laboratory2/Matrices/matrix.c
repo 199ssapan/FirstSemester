@@ -12,15 +12,14 @@ void handWriteMatrix(Matrix* matrix)
 		}
 	}
 }
-Matrix* multiplyMatrices(Matrix* firstMatrix, Matrix* secondMatrix)
+int multiplyMatrices(Matrix* firstMatrix, Matrix* secondMatrix, Matrix* resultMatrix)
 {
 	if (firstMatrix->columns != secondMatrix->rows)
 	{
 		printf_s("Wrong size of matrix!\n");
-		return NULL;
+		return 0;
 	}
-	Matrix resultMatrix;
-	allocMatrix(&resultMatrix, firstMatrix->rows, secondMatrix->columns);
+	allocMatrix(resultMatrix, firstMatrix->rows, secondMatrix->columns);
 	for (int i = 0; i < firstMatrix->rows; i++)
 	{
 		for (int j = 0; j < secondMatrix->columns; j++)
@@ -30,64 +29,61 @@ Matrix* multiplyMatrices(Matrix* firstMatrix, Matrix* secondMatrix)
 			{
 				sum += (firstMatrix->data[i][k] * secondMatrix->data[k][j]);
 			}
-			resultMatrix.data[i][j] = sum;
+			resultMatrix->data[i][j] = sum;
 		}
 	}
-	return &resultMatrix;
+	return 1;
 }
 
-Matrix* transpose(Matrix* matrixToTranspose)
+int transpose(Matrix* matrixToTranspose, Matrix* resultMatrix)
 {
-	int newMatrixRows = matrixToTranspose->columns;
-	int newMatrixColumns = matrixToTranspose->rows;
-	Matrix newMatrix;
-	allocMatrix(&newMatrix, newMatrixRows, newMatrixColumns);
+	int resultMatrixRows = matrixToTranspose->columns;
+	int resultMatrixColumns = matrixToTranspose->rows;
+	allocMatrix(resultMatrix, resultMatrixRows, resultMatrixColumns);
 	for (int i = 0; i < matrixToTranspose->rows; i++)
 	{
 		for (int j = 0; j < matrixToTranspose->columns; j++)
 		{
-			newMatrix.data[j][i] = matrixToTranspose->data[i][j];
+			resultMatrix->data[j][i] = matrixToTranspose->data[i][j];
 		}
 	}
-	return &newMatrix;
+	return 1;
 }
 
-Matrix* matrixSum(Matrix* firstMatrix, Matrix* secondMatrix)
+int matrixSum(Matrix* firstMatrix, Matrix* secondMatrix, Matrix* newMatrix)
 {
 	if (firstMatrix->rows != secondMatrix->rows || firstMatrix->columns != secondMatrix->columns)
 	{
 		printf_s("Wrong size of matrix!\n");
-		return NULL;
+		return 0;
 	}
-	Matrix newMatrix;
-	allocMatrix(&newMatrix, firstMatrix->rows, firstMatrix->columns);
+	allocMatrix(newMatrix, firstMatrix->rows, firstMatrix->columns);
 	for (int i = 0; i < firstMatrix->rows; i++)
 	{
 		for (int j = 0; j < firstMatrix->columns; j++)
 		{
-			newMatrix.data[i][j] = firstMatrix->data[i][j] + secondMatrix->data[i][j];
+			newMatrix->data[i][j] = firstMatrix->data[i][j] + secondMatrix->data[i][j];
 		}
 	}
-	return &newMatrix;
+	return 1;
 }
 
-Matrix* matrixSubstitution(Matrix* firstMatrix, Matrix* secondMatrix)
+int matrixSubstitution(Matrix* firstMatrix, Matrix* secondMatrix, Matrix* newMatrix)
 {
 	if (firstMatrix->rows != secondMatrix->rows || firstMatrix->columns != secondMatrix->columns)
 	{
 		printf_s("Wrong size of matrix!\n");
-		return NULL;
+		return 0;
 	}
-	Matrix newMatrix;
-	allocMatrix(&newMatrix, firstMatrix->rows, firstMatrix->columns);
+	allocMatrix(newMatrix, firstMatrix->rows, firstMatrix->columns);
 	for (int i = 0; i < firstMatrix->rows; i++)
 	{
 		for (int j = 0; j < firstMatrix->columns; j++)
 		{
-			newMatrix.data[i][j] = firstMatrix->data[i][j] - secondMatrix->data[i][j];
+			newMatrix->data[i][j] = firstMatrix->data[i][j] - secondMatrix->data[i][j];
 		}
 	}
-	return &newMatrix;
+	return 1;
 }
 
 void allocMatrix(Matrix* matrix, unsigned rowCount, unsigned columnCount)
@@ -139,51 +135,56 @@ void freeMatrix(Matrix* matrix)
 		free(matrix->data[i]);
 	}
 }
-void getDeterminant(Matrix* matrix)
+int getDeterminant(Matrix* matrix)
 {
 	if (matrix->hasDet == 1.0) return;
 	if (matrix->rows != matrix->columns)
 	{
 		matrix->hasDet = 0;
 		matrix->det = 0.0;
-		return;
+		return 1;
 	}
+	Matrix* matrixCopy = (Matrix*)malloc((sizeof(Matrix)));
+	allocMatrix(matrixCopy, matrix->rows, matrix->columns);
+	copyData(matrix, matrixCopy);
 	double sign = 1.0;
-	for (int i = 0; i < matrix->rows - 1; i++)
+	for (int i = 0; i < matrixCopy->rows - 1; i++)
 	{
 
-		if (matrix->data[i][i] == 0.0)
+		if (matrixCopy->data[i][i] == 0.0)
 		{
-			for (int k = i; k < matrix->rows; k++)
+			for (int k = i; k < matrixCopy->rows; k++)
 			{
-				if (matrix->data[k][i] != 0.0)
+				if (matrixCopy->data[k][i] != 0.0)
 				{
-					swapTwoLine(matrix->data[k], matrix->data[i]);
+					swapTwoLine(matrixCopy->data[k], matrixCopy->data[i]);
 					sign = sign == 1.0 ? -1.0 : 1.0;
 					break;
 				}
 			}
-			if (matrix->data[i][i] == 0.0)
+			if (matrixCopy->data[i][i] == 0.0)
 			{
-				matrix->hasDet = 1;
-				matrix->det = 0.0;
-				return;
+				matrixCopy->hasDet = 1;
+				matrixCopy->det = 0.0;
+				return 1;
 			}
 		}
-		for (int k = i + 1; k < matrix->rows; k++)
+		for (int k = i + 1; k < matrixCopy->rows; k++)
 		{
-			double coeff = (matrix->data[k][i] / matrix->data[i][i]);
-			multAndSub(matrix->data[i], matrix->data[k], coeff, matrix->rows);
+			double coeff = (matrixCopy->data[k][i] / matrixCopy->data[i][i]);
+			multAndSub(matrixCopy->data[i], matrixCopy->data[k], coeff, matrixCopy->rows);
 		}
 	}
-	matrix->det = 1.0;
-	for (int i = 0, j = 0; i < matrix->rows; i++, j++)
+	matrixCopy->det = 1.0;
+	for (int i = 0, j = 0; i < matrixCopy->rows; i++, j++)
 	{
-		matrix->det *= matrix->data[i][j];
+		matrixCopy->det *= matrixCopy->data[i][j];
 	}
 	matrix->hasDet = 1;
-	matrix->det = matrix->det * sign;
-	return;
+	matrix->det = matrixCopy->det * sign;
+	freeMatrix(matrixCopy);
+	free(matrixCopy);
+	return 1;
 }
 
 void multAndSub(double* firstArr, double* secondArr, double coef, int len)
@@ -235,4 +236,22 @@ void dswap(double* first, double* second)
 	double tmp = *first;
 	*first = *second;
 	*second = tmp;
+}
+
+int changeMatrix(Matrix* matrix, unsigned indexRow, unsigned indexColumn)
+{
+	if (indexRow <= matrix->rows && indexColumn <= matrix->columns)
+	{
+		printf_s("Enter the value:\n>");
+		scanf_s("%lf", &matrix->data[indexRow - 1][indexColumn - 1]);
+	}
+	else if (indexRow == 0 || indexColumn == 0)
+	{
+		printf_s("Positions start with 1!\n");
+	}
+	else
+	{
+		printf_s("Enter the position correctly!\n");
+	}
+	
 }

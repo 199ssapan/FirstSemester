@@ -153,22 +153,22 @@ void checkFile(FILE* file, char* filename)
 	if (isBigNumber(file)) errex("Too big number in the file!");
 }
 
-void useCurrentMatrix(Matrix* matrix, FILE* file1, char* filename1, FILE* file2, char* filename2)
+void useCurrentMatrix(Matrix* matrix, Matrix** matrices)
 {
 	printf_s("Do you want to use this matrix for future calculations?\n1. Yes\n2. No\n");
 	char action = _getch();
 	switch (action)
 	{
 	case '1':
-		printf_s("In which file do you want to write this matrix?\n1. 1\n2. 2\n");
+		printf_s("Instead of what matrix do you want to use this matrix??\n1. 1\n2. 2\n");
 		char f = _getch();
 		switch (f)
 		{
 		case '1':
-			writeToFile(matrix, file1, filename1);
+			copyData(matrix, matrices[0]);
 			break;
 		case '2':
-			writeToFile(matrix, file2, filename2);
+			copyData(matrix, matrices[1]);
 			break;
 		}
 	case 2:
@@ -177,7 +177,6 @@ void useCurrentMatrix(Matrix* matrix, FILE* file1, char* filename1, FILE* file2,
 		break;
 	}
 }
-
 void writeToFile(Matrix* matrix, FILE* file, char* filename)
 {
 	fclose(file);
@@ -280,4 +279,47 @@ void rewritingToFile(FILE* file, char* filename, int linesCount)
 	}
 	free(matrix);
 	return;
+}
+
+void copyData(Matrix* matrixFrom, Matrix* matrixTo)
+{
+	if (matrixTo != NULL)
+	{
+		freeMatrix(matrixTo);
+	}
+	allocMatrix(matrixTo, matrixFrom->rows, matrixFrom->columns);
+	for (int i = 0; i < matrixFrom->rows; i++)
+	{
+		for (int j = 0; j < matrixFrom->columns; j++)
+		{
+			matrixTo->data[i][j] = matrixFrom->data[i][j];
+		}
+	}
+	matrixTo->det = matrixFrom->det;
+	matrixTo->hasDet = matrixFrom->hasDet;
+}
+
+void detCheck(Matrix* matrix)
+{
+	if (matrix->hasDet != 0)
+	{
+		printf_s("Determinant is:\t%lf\n", matrix->det);
+		system("pause");
+	}
+	else
+	{
+		if (getDeterminant(matrix))
+		{
+			if (matrix->hasDet == 1)
+			{
+				printf_s("Determinant is:\t%lf\n", matrix->det);
+				system("pause");
+			}
+			else
+			{
+				printf_s("This matrix has no determinant!\n");
+				system("pause");
+			}
+		}
+	}
 }

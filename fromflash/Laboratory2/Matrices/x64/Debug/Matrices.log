@@ -1,33 +1,38 @@
-﻿  matrix.c
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(7,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(9,21): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(24,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(26,21): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(29,22): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(45,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(47,21): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(64,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(66,21): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(83,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(85,21): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(101,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(112,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(114,21): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(125,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(127,21): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(137,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(152,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(157,22): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(161,33): warning C4047: функция: "double **" отличается по уровням косвенного обращения от "double *"
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(161,30): warning C4024: swapTwoLine: различные типы для формального и фактического параметров 1
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(161,50): warning C4047: функция: "double **" отличается по уровням косвенного обращения от "double *"
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(161,47): warning C4024: swapTwoLine: различные типы для формального и фактического параметров 2
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(173,25): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(180,27): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(208,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(210,21): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(52): warning C4172: возвращение адреса локальной или временной переменной : newMatrix
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(71): warning C4172: возвращение адреса локальной или временной переменной : newMatrix
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(36): warning C4172: возвращение адреса локальной или временной переменной : resultMatrix
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\Matrices\matrix.c(90): warning C4172: возвращение адреса локальной или временной переменной : newMatrix
-  Matrices.vcxproj -> C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory2\x64\Debug\Matrices.exe
+﻿  mainMenu.c
+C:\Users\Admin\Desktop\Laboratory2\Matrices\mainMenu.c(76,43): warning C4047: функция: "Matrix **" отличается по уровням косвенного обращения от "FILE *"
+C:\Users\Admin\Desktop\Laboratory2\Matrices\mainMenu.c(76,38): warning C4024: useCurrentMatrix: различные типы для формального и фактического параметров 2
+C:\Users\Admin\Desktop\Laboratory2\Matrices\mainMenu.c(76,45): warning C4020: useCurrentMatrix: слишком много фактических параметров
+C:\Users\Admin\Desktop\Laboratory2\Matrices\mainMenu.c(89,11): warning C4101: det: неиспользованная локальная переменная
+  matrix.c
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(7,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(9,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(23,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(25,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(28,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(43,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(45,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(61,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(63,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(79,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(81,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(97,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(108,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(110,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(121,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(123,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(133,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(140,29): warning C4033: "getDeterminant" должен возвращать значение
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(151,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(156,22): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(160,37): warning C4047: функция: "double **" отличается по уровням косвенного обращения от "double *"
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(160,34): warning C4024: swapTwoLine: различные типы для формального и фактического параметров 1
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(160,58): warning C4047: функция: "double **" отличается по уровням косвенного обращения от "double *"
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(160,55): warning C4024: swapTwoLine: различные типы для формального и фактического параметров 2
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(172,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(179,27): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(209,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(211,21): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода...
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(188): warning C4715: getDeterminant: значение возвращается не при всех путях выполнения
+C:\Users\Admin\Desktop\Laboratory2\Matrices\matrix.c(257): warning C4716: changeMatrix: должна возвращать значение
+  Matrices.vcxproj -> C:\Users\Admin\Desktop\Laboratory2\x64\Debug\Matrices.exe
