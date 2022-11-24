@@ -244,6 +244,7 @@ int changeMatrix(Matrix* matrix, unsigned indexRow, unsigned indexColumn)
 	{
 		printf_s("Enter the value:\n>");
 		scanf_s("%lf", &matrix->data[indexRow - 1][indexColumn - 1]);
+		matrix->hasDet = 0;
 	}
 	else if (indexRow == 0 || indexColumn == 0)
 	{
