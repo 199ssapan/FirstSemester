@@ -253,5 +253,4 @@ int changeMatrix(Matrix* matrix, unsigned indexRow, unsigned indexColumn)
 	{
 		printf_s("Enter the position correctly!\n");
 	}
-	
 }

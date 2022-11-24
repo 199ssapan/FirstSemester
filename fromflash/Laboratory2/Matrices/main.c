@@ -14,5 +14,3 @@ int main()
 	printf_s("Good Bye!\n");
 	return 0;
 }
-
-
