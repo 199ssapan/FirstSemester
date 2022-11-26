@@ -3,49 +3,58 @@
 #include <limits.h>
 #include <math.h>
 
-int sumOfDigits(int number);
-int multOfDigits(int number);
-int findFirstMinSum(int t);
+int sumDigitsInNumber(int num);
+int A(int number);
+int B(int number);
 
 
 int main()
 {
-	int t = 0; int q = 0;
-	printf_s("Enter the number in [1, 84] and number in [1, 1'000'000'000]\n");
-	scanf_s("%d %d", &t, &q);
-	printf_s("%d", findFirstMinSum(t));
+	int b = B(120);
+	printf_s("%d", b);
 	return 0;
 }
 
-int sumOfDigits(int number)
+int A(int number)
+{
+	int result = 0;
+	int power = 1;
+	while (number - sumDigitsInNumber(result) > 10)
+	{
+		result += 9 * power;
+		power *= 10;
+	}
+	result += (number - sumDigitsInNumber(result)) * (power);
+	return result;
+}
+
+int B(int number)
+{
+	if (number < 10 && number > 0) return number;
+	if (isPrime(number)) return -1;
+	int result = 0;
+	int power = 1;
+	for (int i = 9; i > 1; i--)
+	{
+		while (number % i == 0)
+		{
+			result += i * power;
+			power *= 10;
+			number /= i;
+		}
+	}
+	return result;
+}
+
+int sumDigitsInNumber(int num)
 {
 	int sum = 0;
-	while (number != 0)
+	while (num != 0)
 	{
-		sum += (number % 10);
-		number /= 10;
+		sum += (num % 10);
+		num /= 10;
 	}
 	return sum;
-}
-
-int multOfDigits(int number)
-{
-	int mult = 1;
-	while (number != 0)
-	{
-		mult *= (number * 10);
-		number /= 10;
-	}
-}
-
-int findFirstMinSum(int t)
-{
-	for (int i = 1; i < INT_MAX; i++)
-	{
-		int sum = sumOfDigits(i);
-		if (sum == t) return i;
-	}
-	return -1;
 }
 
 int isPrime(int n)

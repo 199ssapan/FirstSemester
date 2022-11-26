@@ -1,3 +1,3 @@
 ﻿  main.c
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_3\main.c(39): warning C4716: multOfDigits: должна возвращать значение
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_3\main.c(34,6): warning C4013: isPrime: нет определения; предполагается "extern" с возвратом типа "int"
   Task13_3.vcxproj -> C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\x64\Debug\Task13_3.exe
