@@ -1,5 +1,5 @@
 ﻿  helpFuncs.c
-C:\Users\Admin\Desktop\Task13\Task13_1\helpFuncs.c(74,34): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_1\helpFuncs.c(74,34): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
   main.c
   Создание кода...
-  Task13_1.vcxproj -> C:\Users\Admin\Desktop\Task13\x64\Debug\Task13_1.exe
+  Task13_1.vcxproj -> C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\x64\Debug\Task13_1.exe
