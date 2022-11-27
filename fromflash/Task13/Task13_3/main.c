@@ -3,19 +3,20 @@
 #include <limits.h>
 #include <math.h>
 
-int sumDigitsInNumber(int num);
-int A(int number);
-int B(int number);
+unsigned sumDigitsInNumber(int num);
+unsigned A(int number);
+unsigned B(int number);
+unsigned C(int number);
 
 
 int main()
 {
-	int b = B(120);
-	printf_s("%d", b);
+	unsigned c = C(81);
+	printf_s("%u", c);
 	return 0;
 }
 
-int A(int number)
+unsigned A(int number)
 {
 	int result = 0;
 	int power = 1;
@@ -28,7 +29,7 @@ int A(int number)
 	return result;
 }
 
-int B(int number)
+unsigned B(int number)
 {
 	if (number < 10 && number > 0) return number;
 	if (isPrime(number)) return -1;
@@ -46,15 +47,25 @@ int B(int number)
 	return result;
 }
 
-int sumDigitsInNumber(int num)
+unsigned C(int number)
 {
 	int sum = 0;
-	while (num != 0)
+	unsigned result = 0;
+	long power = 100000000;
+	if (number > 81)
 	{
-		sum += (num % 10);
-		num /= 10;
+		if (number == 82) result += 1 * 10 * power;
+		if (number == 83) result += 2 * 10 * power;
+		if (number == 84) result += 3 * 10 * power;
 	}
-	return sum;
+	while (number - sum >= 10)
+	{
+		result += 9 * power;
+		power /= 10;
+		sum = sumDigitsInNumber(result);
+	}
+	result += (number - sum) * power;
+	return result;
 }
 
 int isPrime(int n)
@@ -71,4 +82,15 @@ int isPrime(int n)
 		}
 		return 1;
 	}
+}
+
+unsigned sumDigitsInNumber(unsigned num)
+{
+	int sum = 0;
+	while (num != 0)
+	{
+		sum += (num % 10);
+		num /= 10;
+	}
+	return sum;
 }

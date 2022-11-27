@@ -1,3 +1,4 @@
 ﻿  main.c
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_3\main.c(34,6): warning C4013: isPrime: нет определения; предполагается "extern" с возвратом типа "int"
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_3\main.c(35,6): warning C4013: isPrime: нет определения; предполагается "extern" с возвратом типа "int"
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_3\main.c(87,37): warning C4028: формальный параметр 1 отличается от объявления
   Task13_3.vcxproj -> C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\x64\Debug\Task13_3.exe
