@@ -18,6 +18,9 @@ void test(linkedList* list)
 	pushBack(list, "is");
 	pushBack(list, "Maksim");
 	printList(list);
+	deleteElement(list, "name");
+	printList(list);
+	if (!deleteElement(list, "ppp")) printf_s("No such element to delete\n");
 	printf_s("\n");
 
 	Node* node = findElemByPosition(list, 5);
@@ -28,7 +31,7 @@ void test(linkedList* list)
 	if (node1) printf_s("%s\n", node1->Data);
 	else printf_s("No such element in list!\n");
 
-	if (!deleteElement(list, "my")) printf_s("No such element to delete");
+	if (!deleteElement(list, "my")) printf_s("No such element to delete\n");
 	printList(list);
 	printf_s("\n");
 	printf_s("%d", getSizeOfList(list));

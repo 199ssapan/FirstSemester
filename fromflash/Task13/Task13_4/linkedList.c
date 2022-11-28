@@ -62,6 +62,10 @@ int deleteElement(linkedList* list, char* value)
 				break;
 			}
 		}
+		else
+		{
+			return 0;
+		}
 	}
 	list->size--;
 	return 1;
@@ -83,6 +87,11 @@ void printList(linkedList* list)
 	current = list->head;
 	while (current != NULL)
 	{
+		if (current->next == NULL)
+		{
+			printf_s("%s\n", current->Data);
+			break;
+		}
 		printf_s("%s\t", current->Data);
 		current = current->next;
 	}
@@ -111,7 +120,7 @@ int destroyList(linkedList* list)
 {
 	Node* current = NULL;
 	Node* previous = NULL;
-	if (list->head == 0)
+	if (list->head == NULL)
 	{
 		return 1;
 	}

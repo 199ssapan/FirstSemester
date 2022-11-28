@@ -2,8 +2,9 @@
 C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_4\linkedList.c(18,52): warning C4133: =: несовместимые типы - из "Node *" в "Node *"
 C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_4\linkedList.c(36,27): warning C4133: =: несовместимые типы - из "Node *" в "Node *"
 C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_4\linkedList.c(56,27): warning C4133: =: несовместимые типы - из "Node *" в "Node *"
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_4\linkedList.c(87,26): warning C4133: =: несовместимые типы - из "Node *" в "Node *"
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_4\linkedList.c(98,20): warning C4018: >: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_4\linkedList.c(105,26): warning C4133: =: несовместимые типы - из "Node *" в "Node *"
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_4\linkedList.c(123,26): warning C4133: =: несовместимые типы - из "Node *" в "Node *"
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_4\linkedList.c(96,26): warning C4133: =: несовместимые типы - из "Node *" в "Node *"
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_4\linkedList.c(107,20): warning C4018: >: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_4\linkedList.c(114,26): warning C4133: =: несовместимые типы - из "Node *" в "Node *"
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_4\linkedList.c(132,26): warning C4133: =: несовместимые типы - из "Node *" в "Node *"
+  LINK : не найден или не выполнена сборка C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\x64\Debug\Task13_4.exe при последней инкрементной компоновке; выполняется полная компоновка
   Task13_4.vcxproj -> C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\x64\Debug\Task13_4.exe

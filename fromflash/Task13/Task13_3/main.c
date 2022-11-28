@@ -3,16 +3,19 @@
 #include <limits.h>
 #include <math.h>
 
-unsigned sumDigitsInNumber(int num);
+unsigned sumDigitsInNumber(unsigned num);
 unsigned A(int number);
 unsigned B(int number);
 unsigned C(int number);
-
+unsigned D(unsigned number);
+int isPrime(unsigned n);
+unsigned isZero(unsigned number);
+unsigned multDigitsInNumber(unsigned num);
+void numbersFactros(int number);
 
 int main()
 {
-	unsigned c = C(81);
-	printf_s("%u", c);
+	numbersFactros(84);
 	return 0;
 }
 
@@ -68,7 +71,40 @@ unsigned C(int number)
 	return result;
 }
 
-int isPrime(int n)
+unsigned isZero(unsigned number)
+{
+	while (number != 0)
+	{
+		if (number % 10 == 0)
+		{
+			return 0;
+		}
+		number /= 10;
+	}
+	return 1;
+}
+
+unsigned D(unsigned number)
+{
+	if (isPrime(number))
+	{
+		return -1;
+	}
+	for (unsigned i = UINT_MAX; i > 0; i--)
+	{
+		if (!isZero)
+		{
+			continue;
+		}
+		if (multDigitsInNumber(i) == number)
+		{
+			return i;
+		}
+	}
+	return -1;
+}
+
+int isPrime(unsigned n)
 {
 	if (n == 1)
 	{
@@ -94,3 +130,30 @@ unsigned sumDigitsInNumber(unsigned num)
 	}
 	return sum;
 }
+
+unsigned multDigitsInNumber(unsigned num)
+{
+	int mult = 0;
+	while (num != 0)
+	{
+		mult *= (num % 10);
+		num /= 10;
+	}
+	return mult;
+}
+
+void numbersFactros(int number)
+{
+	int div = 2;
+	while (number != 1)
+	{
+		while (number % div == 0)
+		{
+			printf_s("%d ", div);
+			number /= div;
+		}
+		div += 1;
+	}
+	printf_s("\n");
+}
+
