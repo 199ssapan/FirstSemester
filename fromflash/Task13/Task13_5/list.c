@@ -22,9 +22,9 @@ void pushBack(List* list, char* value)
 		newElem->next = NULL;
 		newElem->prev = NULL;
 
-		if (list->head == 0)
+		if (list->head == NULL)
 			list->head = newElem;
-		else if (list->tail == 0)
+		else if (list->tail == NULL)
 		{
 			list->tail = newElem;
 			list->tail->prev = list->head;
@@ -47,12 +47,14 @@ void pushFront(List* list, char* value)
 	strcpy(newElem->data, value);
 	newElem->next = list->head;
 	newElem->prev = NULL;
-	if (list->head) {
+	if (list->head) 
+	{
 		list->head->prev = newElem;
 	}
 	list->head = newElem;
 
-	if (list->tail == NULL) {
+	if (list->tail == NULL)
+	{
 		list->tail = newElem;
 	}
 	list->size++;
@@ -71,7 +73,6 @@ void deleteElem(List* list, char* value)
 		list->head = current->next;
 		free(list->head->prev->data);
 		free(list->head->prev);
-		printf_s("Success!\n");
 		list->size--;
 		return;
 	}
@@ -84,7 +85,6 @@ void deleteElem(List* list, char* value)
 			current->next->prev = current->prev;
 			free(current->data);
 			free(current);
-			printf_s("Success!\n");
 			list->size--;
 			return;
 		}
@@ -95,7 +95,7 @@ void deleteElem(List* list, char* value)
 		list->tail = current->prev;
 		free(list->tail->next->data);
 		free(list->tail->next);
-		printf_s("Success!\n");
+		list->tail->next = NULL;
 		list->size--;
 		return;
 	}
@@ -112,9 +112,11 @@ void printList(List* list)
 		if (current == list->tail)
 		{
 			printf_s("%s\n", current->data);
-			break;
 		}
-		printf_s("%s ", current->data);
+		else
+		{
+			printf_s("%s ", current->data);
+		}
 		current = current->next;
 	}
 }
@@ -163,7 +165,6 @@ unsigned getSizeOfList(List* list)
 
 void destroyList(List* list)
 {
-	//доделать!!!!
 	Node* current = NULL;
 	Node* previous = NULL;
 	if (list->head == NULL)
@@ -172,11 +173,11 @@ void destroyList(List* list)
 		return;
 	}
 	current = list->head;
-	while (current->next != NULL)
+	while (current != NULL)
 	{
-		free(current->data);
 		previous = current;
 		current = current->next;
+		free(previous->data);
 		free(previous);
 	}
 	free(list);
@@ -192,10 +193,6 @@ void swapNeighbourNodes(Node* lNode, Node* rNode)
 	}
 	Node* leftPrev = lNode->prev;
 	Node* rightNext = rNode->next;
-	rNode->prev = leftPrev;
-	lNode->next = rightNext;
-	lNode->prev = rNode;
-	rNode->next = lNode;
 	if (leftPrev != NULL)
 	{
 		leftPrev->next = rNode;
@@ -204,6 +201,10 @@ void swapNeighbourNodes(Node* lNode, Node* rNode)
 	{
 		rightNext->prev = lNode;
 	}
+	rNode->prev = leftPrev;
+	lNode->next = rightNext;
+	lNode->prev = rNode;
+	rNode->next = lNode;
 }
 
 void swapNoNeighbourNodes(List* list, Node* leftNode, Node* rightNode)
@@ -236,6 +237,41 @@ void swapNoNeighbourNodes(List* list, Node* leftNode, Node* rightNode)
 		if (rightPrev != NULL)
 			rightPrev->next = leftNode;
 		leftNode->prev = rightPrev;
-		
+	}
+	//меняем голову и хвост если вдруг их поменяли
+	if (leftNode == list->head)
+		list->head = rightNode;
+	else if (rightNode == list->head)
+		list->head = leftNode;
+	if (leftNode == list->tail)
+		list->tail = rightNode;
+	else if (rightNode == list->tail)
+		list->tail = leftNode;
+}
+
+void bubbleSorting(List* list)
+{
+	for (int i = 0; i < list->size; i++)
+	{
+		Node* current = list->head;
+		while (current != NULL)
+		{
+			if (current->next != NULL)
+			{
+				if (strcmp(current->data, current->next->data) > 0)
+				{
+					swapNeighbourNodes(list, current, current->next);
+				}
+				else 
+				{
+					current = current->next;
+				}
+			}
+			else
+			{
+				break;
+			}
+			
+		}
 	}
 }

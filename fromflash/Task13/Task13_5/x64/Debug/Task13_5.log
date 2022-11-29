@@ -1,3 +1,6 @@
 ﻿  list.c
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_5\list.c(147,20): warning C4018: >: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_5\list.c(149,20): warning C4018: >: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_5\list.c(254,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_5\list.c(263,29): warning C4133: функция: несовместимые типы - из "List *" в "Node *"
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_5\list.c(263,47): warning C4020: swapNeighbourNodes: слишком много фактических параметров
   Task13_5.vcxproj -> C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\x64\Debug\Task13_5.exe
