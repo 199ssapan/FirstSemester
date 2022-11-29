@@ -47,15 +47,19 @@ void pushFront(List* list, char* value)
 	strcpy(newElem->data, value);
 	newElem->next = list->head;
 	newElem->prev = NULL;
-	if (list->head) 
+	if (list->head != NULL) 
 	{
 		list->head->prev = newElem;
 	}
-	list->head = newElem;
+	/*list->head = newElem;
 
 	if (list->tail == NULL)
 	{
 		list->tail = newElem;
+	}*/
+	if (list->size == 0)
+	{
+		list->head = list->tail = newElem;
 	}
 	list->size++;
 }
@@ -209,9 +213,17 @@ void swapNeighbourNodes(Node* lNode, Node* rNode)
 
 void swapNoNeighbourNodes(List* list, Node* leftNode, Node* rightNode)
 {
-	if (rightNode->prev == leftNode || leftNode->next == rightNode)
+	if (leftNode == rightNode)
+	{
+		return;
+	}
+	if (rightNode->prev == leftNode)
 	{
 		swapNeighbourNodes(rightNode, leftNode);
+	}
+	else if (leftNode->next == rightNode)
+	{
+		swapNeighbourNodes(leftNode, rightNode);
 	}
 	else
 	{
@@ -220,23 +232,19 @@ void swapNoNeighbourNodes(List* list, Node* leftNode, Node* rightNode)
 		Node* rightNext = rightNode->next;
 		Node* rightPrev = rightNode->prev;
 
-		if (leftNext != NULL) // тогда leftNode - не хвост а значит можем связать
-			leftNext->prev = rightNode;
-		//также делаем "обратную связь" для rightNode
-		rightNode->next = leftNext;
-
-		//повторяем операции для всех узлов
-		if (leftPrev != NULL)
+		if (leftPrev != 0)
 			leftPrev->next = rightNode;
 		rightNode->prev = leftPrev;
+		rightNode->next = leftNext;
+		if (leftNext != 0)
+			leftNext->prev = rightNode;
 
-		if (rightNext != NULL)
-			rightNext->prev = leftNode;
-		leftNode->next = rightNext;
-
-		if (rightPrev != NULL)
+		if (rightPrev != 0)
 			rightPrev->next = leftNode;
+		leftNode->next = rightNext;
 		leftNode->prev = rightPrev;
+		if (rightNext != 0)
+			rightNext->prev = leftNode;
 	}
 	//меняем голову и хвост если вдруг их поменяли
 	if (leftNode == list->head)
@@ -260,7 +268,7 @@ void bubbleSorting(List* list)
 			{
 				if (strcmp(current->data, current->next->data) > 0)
 				{
-					swapNeighbourNodes(list, current, current->next);
+					swapNoNeighbourNodes(list, current, current->next);
 				}
 				else 
 				{
