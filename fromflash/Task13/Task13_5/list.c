@@ -51,16 +51,13 @@ void pushFront(List* list, char* value)
 	{
 		list->head->prev = newElem;
 	}
-	/*list->head = newElem;
+	list->head = newElem;
 
 	if (list->tail == NULL)
 	{
 		list->tail = newElem;
-	}*/
-	if (list->size == 0)
-	{
-		list->head = list->tail = newElem;
 	}
+
 	list->size++;
 }
 
@@ -173,7 +170,6 @@ void destroyList(List* list)
 	Node* previous = NULL;
 	if (list->head == NULL)
 	{
-		printf_s("Success!\n");
 		return;
 	}
 	current = list->head;
@@ -185,7 +181,6 @@ void destroyList(List* list)
 		free(previous);
 	}
 	free(list);
-	printf_s("Success!\n");
 }
 
 void swapNeighbourNodes(Node* lNode, Node* rNode)
@@ -211,13 +206,13 @@ void swapNeighbourNodes(Node* lNode, Node* rNode)
 	rNode->next = lNode;
 }
 
-void swapNoNeighbourNodes(List* list, Node* leftNode, Node* rightNode)
+void safetySwap(List* list, Node* leftNode, Node* rightNode)
 {
 	if (leftNode == rightNode)
 	{
 		return;
 	}
-	if (rightNode->prev == leftNode)
+	if (rightNode->next == leftNode)
 	{
 		swapNeighbourNodes(rightNode, leftNode);
 	}
@@ -246,7 +241,6 @@ void swapNoNeighbourNodes(List* list, Node* leftNode, Node* rightNode)
 		if (rightNext != 0)
 			rightNext->prev = leftNode;
 	}
-	//меняем голову и хвост если вдруг их поменяли
 	if (leftNode == list->head)
 		list->head = rightNode;
 	else if (rightNode == list->head)
@@ -268,7 +262,7 @@ void bubbleSorting(List* list)
 			{
 				if (strcmp(current->data, current->next->data) > 0)
 				{
-					swapNoNeighbourNodes(list, current, current->next);
+					safetySwap(list, current, current->next);
 				}
 				else 
 				{

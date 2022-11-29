@@ -32,5 +32,5 @@ Node* findElemByValue(List* list, char* value);
 unsigned getSizeOfList(List* list);
 void destroyList(List* list);
 void swapNeighbourNodes(Node* lNode, Node* rNode);
-void swapNoNeighbourNodes(List* list, Node* leftNode, Node* rightNode);
+void safetySwap(List* list, Node* leftNode, Node* rightNode);
 void bubbleSorting(List* list);

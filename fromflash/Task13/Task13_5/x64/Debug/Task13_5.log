@@ -1,4 +1,6 @@
 ﻿  list.c
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_5\list.c(149,20): warning C4018: >: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_5\list.c(262,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_5\list.c(150,20): warning C4018: >: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_5\list.c(256,20): warning C4018: <: несоответствие типов со знаком и без знака
+  main.c
+  Создание кода...
   Task13_5.vcxproj -> C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\x64\Debug\Task13_5.exe

@@ -10,9 +10,17 @@ int main()
 	pushFront(list, "Jarld");
 	pushFront(list, "Ad");
 	pushFront(list, "Ax");
-	printList(list);
 
+	printList(list);
+	bubbleSorting(list);
+	pushBack(list, "word");
+	pushBack(list, "AABB");
+	pushBack(list, "CCDD");
+	pushBack(list, "189");
+	pushFront(list, "_");
+	printList(list);
 	bubbleSorting(list);
 	printList(list);
+	destroyList(list);
 	return 0;
 }
