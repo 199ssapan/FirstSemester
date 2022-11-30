@@ -1,0 +1,8 @@
+﻿  main.c
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task14\Task14_2\main.c(62,25): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task14\Task14_2\main.c(64,26): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task14\Task14_2\main.c(75,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task14\Task14_2\main.c(84,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task14\Task14_2\main.c(95,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task14\Task14_2\main.c(99,20): warning C4018: <: несоответствие типов со знаком и без знака
+  Task14_2.vcxproj -> C:\Users\Admin\Desktop\Cprogramms\fromflash\Task14\x64\Debug\Task14_2.exe
