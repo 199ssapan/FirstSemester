@@ -1,5 +1,2 @@
-﻿  func.c
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_3\func.c(19,6): warning C4013: isPrime: нет определения; предполагается "extern" с возвратом типа "int"
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_3\func.c(44,12): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\Task13_3\func.c(52): warning C4716: C: должна возвращать значение
+﻿  main.c
   Task13_3.vcxproj -> C:\Users\Admin\Desktop\Cprogramms\fromflash\Task13\x64\Debug\Task13_3.exe

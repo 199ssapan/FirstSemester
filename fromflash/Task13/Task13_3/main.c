@@ -2,12 +2,16 @@
 
 int main()
 {
-	unsigned t = 0;
-	for (unsigned i = 32; i > 0; i--)
-	{
-		setBit(&t, i);
-	}
-	printf_s("%u ", t);
+	unsigned T = 38;
+	unsigned Q = 10;
+	unsigned a = A(T);
+	printf_s("%u\n", a);
+	unsigned b = B(Q);
+	b != 0 ? printf_s("%u\n", b) : printf_s("Doesn't exist!\n");
+	unsigned c = C(T);
+	printf_s("%u\n", c);
+	unsigned d = D(Q);
+	d != 0 ? printf_s("%u\n", d) : printf_s("Doesn't exist!\n");
 	return 0;
 }
 
@@ -43,19 +47,3 @@ unsigned isZero(unsigned number)
 //	}
 //	return -1;
 //}
-
-int isPrime(unsigned n)
-{
-	if (n == 1)
-	{
-		return 0;
-	}
-	else
-	{
-		for (int i = 2; i < sqrt(n) + 1; i++)
-		{
-			if (n % i == 0) return 0;
-		}
-		return 1;
-	}
-}

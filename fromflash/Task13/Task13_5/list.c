@@ -227,18 +227,18 @@ void safetySwap(List* list, Node* leftNode, Node* rightNode)
 		Node* rightNext = rightNode->next;
 		Node* rightPrev = rightNode->prev;
 
-		if (leftPrev != 0)
+		if (leftPrev != NULL)
 			leftPrev->next = rightNode;
 		rightNode->prev = leftPrev;
 		rightNode->next = leftNext;
-		if (leftNext != 0)
+		if (leftNext != NULL)
 			leftNext->prev = rightNode;
 
-		if (rightPrev != 0)
+		if (rightPrev != NULL)
 			rightPrev->next = leftNode;
 		leftNode->next = rightNext;
 		leftNode->prev = rightPrev;
-		if (rightNext != 0)
+		if (rightNext != NULL)
 			rightNext->prev = leftNode;
 	}
 	if (leftNode == list->head)
