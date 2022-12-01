@@ -1,61 +1,61 @@
 #include <stdio.h>
 #include <limits.h>
 
-#define COUNTELEM 5
+#define ELEMS_COUNT 5
 
 
 int main()
 {
-	int intArray[10];
+	int arr[10];
 	int number;
 	printf_s("Enter a ten numbers\n");
 	for (int i = 0; i < 10; i++)
 	{
 		printf_s("%d. ", i + 1);
 		scanf_s("%d", &number);
-		intArray[i] = number;
+		arr[i] = number;
 	}
-	int newIntArray[5];
+	int newArr[5];
 	int max = INT_MIN;
 	for (int i = 0; i < 10; i++)
 	{
-		if (intArray[i] > max)
+		if (arr[i] > max)
 		{
-			max = intArray[i];
+			max = arr[i];
 		}
 	}
 	int maxBuffer = INT_MIN;
-	newIntArray[0] = max;
-	for (int i = 1; i < COUNTELEM; i++)
+	newArr[0] = max;
+	for (int i = 1; i < ELEMS_COUNT; i++)
 	{
 		for (int j = 0; j < 10; j++)
 		{
-			if (intArray[j] > maxBuffer && intArray[j] < max)
+			if (arr[j] > maxBuffer && arr[j] < max)
 			{
-				maxBuffer = intArray[j];
+				maxBuffer = arr[j];
 			}
 		}
 		max = maxBuffer;
-		newIntArray[i] = maxBuffer;
+		newArr[i] = maxBuffer;
 		maxBuffer = INT_MIN;
 	}
 	
-	int bubble;
-	for (int i = 1; i < COUNTELEM; i++)
+	int tmp;
+	for (int i = 1; i < ELEMS_COUNT; i++)
 	{
-		for (int j = 1; j < COUNTELEM; j++)
+		for (int j = 1; j < ELEMS_COUNT; j++)
 		{
-			if (newIntArray[j] < newIntArray[j - 1])
+			if (newArr[j] < newArr[j - 1])
 			{
-				bubble = newIntArray[j];
-				newIntArray[j] = newIntArray[j - 1];
-				newIntArray[j - 1] = bubble;
+				tmp = newArr[j];
+				newArr[j] = newArr[j - 1];
+				newArr[j - 1] = tmp;
 			}
 		}
 	}
-	for (int i = 0; i < COUNTELEM; i++)
+	for (int i = 0; i < ELEMS_COUNT; i++)
 	{
-		printf_s("%d ", newIntArray[i]);
+		printf_s("%d ", newArr[i]);
 	}
 
 	return 0;
