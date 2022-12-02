@@ -1,76 +1,48 @@
-#include "list.h"
-#include "myString.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
-void s_copy(char** d, char** s);
-void s_swap(char** f, char** s);
-void i_swap(int* f, int* s);
+void swap(int* left, int* right);
+void sorting(int* arr, int size);
 
-//доделать!!!!!!!!!!!!
 int main(int argc, char* argv[])
 {
-	List* list1 = createList();
-	for (int i = 2; i < argc; i++)
-	{
-		pushBack(list1, argv[i]);
-	}
+	int countStringsToPrint = atoi(argv[1]);
+	if (countStringsToPrint > argc - 2) return -1;
 	int* lenArr = (int*)malloc(sizeof(int) * (argc - 2));
-	char** stringsArr = (char**)malloc(sizeof(char*) * (argc - 2));
-	for (int i = 2; i < argc; i++)
-	{
-		stringsArr[i] = (char*)malloc(sizeof(char) * MAX_STR_LEN);
-	}
-	for (int i = 2; i < argc; i++)
-	{
-		s_copy(&stringsArr[i - 2], &argv[i]);
-	}
-	for (int i = 0; i < argc - 2; i++)
-	{
-		printf_s("%s ", stringsArr[i]);
-	}
 	for (int i = 2; i < argc; i++)
 	{
 		lenArr[i - 2] = strlen(argv[i]);
 	}
-	for (int i = 0; i < argc - 2; i++)
+	sorting(lenArr, argc - 2);
+	int minSuitableLen = lenArr[countStringsToPrint - 1];
+	int count = 0;
+	for (int i = 2; i < argc; i++)
 	{
-		for (int j = 0; j < argc - 3; j++)
+		if (count == countStringsToPrint) break;
+		if (strlen(argv[i]) >= minSuitableLen)
 		{
-			if (lenArr[j] < lenArr[j + 1])
-			{
-				i_swap(&lenArr[j], &lenArr[j + 1]);
-				s_swap(&stringsArr[j], &stringsArr[j + 1]);
-			}
+			printf_s("%s ", argv[i]);
+			count++;
 		}
 	}
-	List* list = createList();
-	for (int i = 0; i < argc - 2; i++)
-	{
-		pushBack(list, stringsArr[i]);
-	}
-	for (int i = atoi(argv[1]); i < argc; i++)
-	{
-		Node* elem = findElemByPosition(list, i);
-		deleteElem(list1, elem->data);
-	}
-	printList(list1);
 	return 0;
 }
 
-void s_copy(char** dest, char** src)
+void sorting(int* arr, int size)
 {
-	*dest = *src;
+	for (int i = 0; i < size; i++)
+	{
+		for (int j = 0; j < size - 1; j++)
+		{
+			if (arr[j] < arr[j + 1]) swap(&arr[j], &arr[j + 1]);
+		}
+	}
 }
 
-void s_swap(char** f, char** s)
+void swap(int* left, int* right)
 {
-	char* tmp = *f;
-	*f = *s;
-	*s = tmp;
-}
-
-void i_swap(int* f, int* s)
-{
-	int tmp = *f;
-	*f = *s;
-	*s = tmp;
+	int tmp = *right;
+	*right = *left;
+	*left = tmp;
 }
