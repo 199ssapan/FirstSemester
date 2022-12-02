@@ -1,0 +1,5 @@
+﻿  main.c
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task14\Task14_5\main.c(4,1): warning C4005: MAX_STR_LEN: изменение макроопределения
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task14\Task14_5\list.h(6): message : см. предыдущее определение "MAX_STR_LEN"
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Task14\Task14_5\main.c(62,34): warning C4267: =: преобразование из "size_t" в "int"; возможна потеря данных
+  Task14_5.vcxproj -> C:\Users\Admin\Desktop\Cprogramms\fromflash\Task14\x64\Debug\Task14_5.exe

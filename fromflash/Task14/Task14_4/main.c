@@ -1,89 +1,76 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
+#include "list.h"
+#include "myString.h"
 
-int* getMaxLenIndexes(int* arr, int size);
-int* copyIntArr(int* arrSrc, int size);
-void swap(int* a, int* b);
-int isElemInArr(int* arr, int size, int value);
-void sort(int* arr, int size);
+void s_copy(char** d, char** s);
+void s_swap(char** f, char** s);
+void i_swap(int* f, int* s);
 
+//доделать!!!!!!!!!!!!
 int main(int argc, char* argv[])
 {
-	int count = atoi(argv[1]);
-	if (count > argc - 2) return 1;
+	List* list1 = createList();
+	for (int i = 2; i < argc; i++)
+	{
+		pushBack(list1, argv[i]);
+	}
 	int* lenArr = (int*)malloc(sizeof(int) * (argc - 2));
-
+	char** stringsArr = (char**)malloc(sizeof(char*) * (argc - 2));
+	for (int i = 2; i < argc; i++)
+	{
+		stringsArr[i] = (char*)malloc(sizeof(char) * MAX_STR_LEN);
+	}
+	for (int i = 2; i < argc; i++)
+	{
+		s_copy(&stringsArr[i - 2], &argv[i]);
+	}
+	for (int i = 0; i < argc - 2; i++)
+	{
+		printf_s("%s ", stringsArr[i]);
+	}
 	for (int i = 2; i < argc; i++)
 	{
 		lenArr[i - 2] = strlen(argv[i]);
 	}
-
-	int* lenArrCopy = copyIntArr(lenArr, argc - 2);
-
-	int* maxIndexes = getMaxLenIndexes(lenArrCopy, argc - 2);
-	sort(maxIndexes, count);
-	for (int i = 0; i < count; i++)
+	for (int i = 0; i < argc - 2; i++)
 	{
-		printf_s("%s ", argv[maxIndexes[i] + 2]);
-	}
-	return 0;
-}
-
-void swap(int* a, int* b)
-{
-	int tmp = *a;
-	*a = *b;
-	*b = tmp;
-}
-
-int* getMaxLenIndexes(int* arr, int size)
-{
-	int* indexArr = (int*)malloc(sizeof(int) * size);
-	for (int i = 0; i < size; i++)
-	{
-		indexArr[i] = i;
-	}
-	for (int i = 0; i < size; i++)
-	{
-		for (int j = 0; j < size - 1; j++)
+		for (int j = 0; j < argc - 3; j++)
 		{
-			if (arr[j] < arr[i + 1])
+			if (lenArr[j] < lenArr[j + 1])
 			{
-				swap(&arr[j], &arr[j + 1]);
-				swap(&indexArr[j], &indexArr[j + 1]);
+				i_swap(&lenArr[j], &lenArr[j + 1]);
+				s_swap(&stringsArr[j], &stringsArr[j + 1]);
 			}
 		}
 	}
-	return indexArr;
-}
-
-int* copyIntArr(int* arrSrc, int size)
-{
-	int* arrDest = (int*)malloc(sizeof(int) * size);
-	for (int i = 0; i < size; i++)
+	List* list = createList();
+	for (int i = 0; i < argc - 2; i++)
 	{
-		arrDest[i] = arrSrc[i];
+		pushBack(list, stringsArr[i]);
 	}
-	return arrDest;
-}
-
-int isElemInArr(int* arr, int size, int value)
-{
-	for (int i = 0; i < size; i++)
+	for (int i = atoi(argv[1]); i < argc; i++)
 	{
-		if (arr[i] == value) return 1;
+		Node* elem = findElemByPosition(list, i);
+		deleteElem(list1, elem->data);
 	}
+	printList(list1);
 	return 0;
 }
 
-void sort(int* arr, int size)
+void s_copy(char** dest, char** src)
 {
-	for (int i = 0; i < size; i++)
-	{
-		for (int j = 0; j < size - 1; j++)
-		{
-			if (arr[j] > arr[j + 1]) swap(&arr[j], &arr[j + 1]);
-		}
-	}
+	*dest = *src;
+}
+
+void s_swap(char** f, char** s)
+{
+	char* tmp = *f;
+	*f = *s;
+	*s = tmp;
+}
+
+void i_swap(int* f, int* s)
+{
+	int tmp = *f;
+	*f = *s;
+	*s = tmp;
 }
