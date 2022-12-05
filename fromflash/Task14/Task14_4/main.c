@@ -5,6 +5,7 @@
 void swap(int* left, int* right);
 void sorting(int* arr, int size);
 
+
 int main(int argc, char* argv[])
 {
 	int countStringsToPrint = atoi(argv[1]);
