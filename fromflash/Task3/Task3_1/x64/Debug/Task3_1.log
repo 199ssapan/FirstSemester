@@ -1,0 +1,9 @@
+﻿  calculator.c
+C:\Users\Admin\Desktop\Task3\Task3_1\secret-level.h(21,13): warning C4476: "scanf_s": неизвестный символ поля типа "\xd1" в описателе формата
+C:\Users\Admin\Desktop\Task3\Task3_1\secret-level.h(21,13): warning C4477: "scanf_s": в строке форматирования "%d" требуется аргумент типа "int *", но вариативный аргумент "2" имеет тип "char *"
+C:\Users\Admin\Desktop\Task3\Task3_1\secret-level.h(21,13): message : рекомендуется использовать "%hhd" в строке форматирования
+C:\Users\Admin\Desktop\Task3\Task3_1\secret-level.h(21,51): warning C4474: "scanf_s" : для строки формата передано слишком много аргументов
+C:\Users\Admin\Desktop\Task3\Task3_1\secret-level.h(21,51): message : заполнители и их параметры ожидают переменное число аргументов в количестве 2, но было предоставлено 6
+  magic.c
+  Создание кода...
+  Task3_1.vcxproj -> C:\Users\Admin\Desktop\Task3\x64\Debug\Task3_1.exe
