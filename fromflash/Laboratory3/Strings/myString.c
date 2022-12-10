@@ -45,8 +45,12 @@ unsigned mystrlen(char* string)
 	return count;
 }
 
-char** StringToArray(char* string, char separator)
+char** StringToArray(char* rawString, char separator)
 {
+	char* string = deleteExcessSymbols(rawString, separator);
+	if (string[0] == separator) string = delFirst(string);
+	if (string[mystrlen(string) - 1] == separator) string = delLast(string);
+	int firstIndex = 0;
 	int sepCount = countSymbols(string, separator);
 	int* sepIndexArr = (int*)calloc((sepCount + 2), sizeof(int));
 	if (!(sepIndexArr))
@@ -152,4 +156,58 @@ int findCountOfSubStrings(char* stringMain, char* substring)
 		}
 	}
 	return subCount;
+}
+
+char* deleteExcessSymbols(char* string, char symbol)
+{
+	int len = mystrlen(string);
+	if (len == 0)
+	{
+		return "";
+	}
+	char* stringToReturn = (char*)malloc(len * sizeof(char));
+	int new_i = 0;
+	int flag = 0;
+	for (int i = 0; i < len;i++)
+	{
+		if (string[i] != symbol)
+		{
+			stringToReturn[new_i] = string[i];
+			new_i++;
+			flag = 0;
+		}
+		else if (flag == 1) {}
+		else
+		{
+			stringToReturn[new_i] = string[i];
+			new_i++;
+			flag = 1;
+		}
+	}
+	stringToReturn[new_i] = '\0';
+	return stringToReturn;
+}
+
+char* delFirst(char* string)
+{
+	unsigned len = mystrlen(string);
+	char* newString = (char*)malloc(sizeof(char) * len);
+	for (int i = 1; i < len; i++)
+	{
+		newString[i - 1] = string[i];
+	}
+	newString[len - 1] = '\0';
+	return newString;
+}
+
+char* delLast(char* string)
+{
+	unsigned len = mystrlen(string);
+	char* newString = (char*)malloc(sizeof(char) * len);
+	for (int i = 0; i < len - 1; i++)
+	{
+		newString[i] = string[i];
+	}
+	newString[len - 1] = '\0';
+	return newString;
 }

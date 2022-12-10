@@ -11,3 +11,6 @@ char** StringToArray(char* string, char separator);
 unsigned countSymbols(char* string, char symbol);
 char* replace(char* string, char* subOut, char* subIn);
 int findCountOfSubStrings(char* stringMain, char* substring);
+char* deleteExcessSymbols(char* string, char symbol);
+char* delFirst(char* string);
+char* delLast(char* string);
