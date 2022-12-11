@@ -1,11 +1,10 @@
 #include "myString.h"
 
 int findSubString(char* stringMain, char* substring)
-{
+{ 
 	unsigned lenMain = mystrlen(stringMain);
 	unsigned lenSub = mystrlen(substring);
-	if (lenSub > lenMain) return 0;
-	if (lenSub == 0) return 0;
+	if (lenSub > lenMain || lenSub == 0 || lenMain == 0) return 0;
 	for (int i = 0; i < lenMain - lenSub + 1; i++)
 	{
 		unsigned count = 0;
@@ -18,44 +17,18 @@ int findSubString(char* stringMain, char* substring)
 	return 0;
 }
 
-int findCountOfAllSubStrings(char* stringMain, char* substring)
-{
-	unsigned lenMain = mystrlen(stringMain);
-	unsigned lenSub = mystrlen(substring);
-	if (lenSub > lenMain) return -1;
-	if (lenSub == 0) return -1;
-	unsigned subCount = 0;
-	for (int i = 0; i < lenMain - lenSub + 1; i++)
-	{
-		unsigned matchCount = 0;
-		for (int j = 0; j < lenSub; j++)
-		{
-			if (substring[j] == stringMain[i + j]) matchCount++;
-		}
-		if (matchCount == lenSub) subCount++;
-	}
-	return subCount;
-}
-
-unsigned mystrlen(char* string)
-{
-	unsigned count = 0;
-	for (int i = 0; string[i] != '\0'; i++)
-		count++;
-	return count;
-}
-
 char** StringToArray(char* rawString, char separator)
 {
 	char* string = deleteExcessSymbols(rawString, separator);
 	if (string[0] == separator) string = delFirst(string);
 	if (string[mystrlen(string) - 1] == separator) string = delLast(string);
+	if (mystrlen(string) == 1 && string[0] == separator || mystrlen(string) == 0) printError("Wring string!");
 	int firstIndex = 0;
 	int sepCount = countSymbols(string, separator);
 	int* sepIndexArr = (int*)calloc((sepCount + 2), sizeof(int));
 	if (!(sepIndexArr))
 	{
-		exit(1);
+		printError(MEM_ALL_ERR);
 	}
 	sepIndexArr[0] = -1;
 	sepIndexArr[sepCount + 1] = mystrlen(string);
@@ -72,7 +45,7 @@ char** StringToArray(char* rawString, char separator)
 	char** stringsArray = (char**)malloc(stringsCount * sizeof(char*));
 	if (!(stringsArray))
 	{
-		exit(1);
+		printError(MEM_ALL_ERR);
 	}
 	for (int i = 0; i < stringsCount; i++)
 	{
@@ -85,7 +58,7 @@ char** StringToArray(char* rawString, char separator)
 				free(stringsArray[j]);
 			}
 			break;
-			exit(1);
+			printError(MEM_ALL_ERR);
 		}
 		memcpy(stringsArray[i], string + sepIndexArr[i] + 1, lettersCount);
 		stringsArray[i][lettersCount] = '\0';
@@ -93,20 +66,28 @@ char** StringToArray(char* rawString, char separator)
 	return stringsArray;
 }
 
-
-unsigned countSymbols(char* string, char symbol)
+int findCountOfSubStrings(char* stringMain, char* substring)
 {
-	unsigned countSymb = 0;
-	for (int i = 0; i < mystrlen(string); i++)
+	unsigned lenMain = mystrlen(stringMain);
+	unsigned lenSub = mystrlen(substring);
+	if (lenSub > lenMain) return -1;
+	if (lenSub == 0) return -1;
+	unsigned subCount = 0;
+	for (int i = 0; i < lenMain - lenSub + 1; i++)
 	{
-		if (string[i] == symbol)
+		unsigned matchCount = 0;
+		for (int j = 0; j < lenSub; j++)
 		{
-			countSymb++;
+			if (substring[j] == stringMain[i + j]) matchCount++;
+		}
+		if (matchCount == lenSub)
+		{
+			subCount++;
+			i += lenSub - 1;
 		}
 	}
-	return countSymb;
+	return subCount;
 }
-
 
 char* replace(char* string, char* subOut, char* subIn)
 {
@@ -135,12 +116,15 @@ char* replace(char* string, char* subOut, char* subIn)
 	return newString;
 }
 
-int findCountOfSubStrings(char* stringMain, char* substring)
+//ADDITIONAL AND AUXILIARY FUNCTIONS
+//ADDITIONAL AND AUXILIARY FUNCTIONS
+//ADDITIONAL AND AUXILIARY FUNCTIONS
+
+int findCountOfIntersectingSubStrings(char* stringMain, char* substring)
 {
 	unsigned lenMain = mystrlen(stringMain);
 	unsigned lenSub = mystrlen(substring);
-	if (lenSub > lenMain) return -1;
-	if (lenSub == 0) return -1;
+	if (lenSub > lenMain || lenMain == 0 || lenSub == 0) return 0;
 	unsigned subCount = 0;
 	for (int i = 0; i < lenMain - lenSub + 1; i++)
 	{
@@ -149,13 +133,30 @@ int findCountOfSubStrings(char* stringMain, char* substring)
 		{
 			if (substring[j] == stringMain[i + j]) matchCount++;
 		}
-		if (matchCount == lenSub)
-		{
-			subCount++;
-			i += lenSub - 1;
-		}
+		if (matchCount == lenSub) subCount++;
 	}
 	return subCount;
+}
+
+unsigned mystrlen(char* string)
+{
+	unsigned count = 0;
+	for (int i = 0; string[i] != '\0'; i++)
+		count++;
+	return count;
+}
+
+unsigned countSymbols(char* string, char symbol)
+{
+	unsigned countSymb = 0;
+	for (int i = 0; i < mystrlen(string); i++)
+	{
+		if (string[i] == symbol)
+		{
+			countSymb++;
+		}
+	}
+	return countSymb;
 }
 
 char* deleteExcessSymbols(char* string, char symbol)
@@ -210,4 +211,10 @@ char* delLast(char* string)
 	}
 	newString[len - 1] = '\0';
 	return newString;
+}
+
+void printError(char* errorText)
+{
+	printf_s("%s\n", errorText);
+	exit(1);
 }

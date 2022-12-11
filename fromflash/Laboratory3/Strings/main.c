@@ -35,4 +35,5 @@ void test()
 	anotherString = replace(anotherString, "Maksim", "Petrov");
 	anotherString = replace(anotherString, "ello", "i");
 	printf_s("After replacing substring:\t%s\n", anotherString);
+	free(anotherString);
 }
