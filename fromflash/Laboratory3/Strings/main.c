@@ -13,8 +13,8 @@ void test()
 	char* string = "Hello";
 	char* sub = "ell";
 	char* nSub = "ss";
-	if (findSubString(string, "ell")) printf_s("There is %s in %s\n", sub, string);
-	if (!(findSubString(string, nSub))) printf_s("There is no %s in %s\n", nSub, string);
+	if (findIndexFirstSubString(string, "ell")) printf_s("There is %s in %s\n", sub, string);
+	if (findIndexFirstSubString(string, nSub) == -1) printf_s("There is no %s in %s\n", nSub, string);
 
 	char* oneMoreString = "1231231190991Hello23321123Hey";
 	char* newSub = "123";

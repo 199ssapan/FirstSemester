@@ -5,7 +5,7 @@
 
 #define MEM_ALL_ERR "Memory allocation error!"
 
-int findSubString(char* stringMain, char* substring);
+int findIndexFirstSubString(char* stringMain, char* substring);
 char** StringToArray(char* string, char separator);
 char* replace(char* string, char* subOut, char* subIn);
 int findCountOfSubStrings(char* stringMain, char* substring);

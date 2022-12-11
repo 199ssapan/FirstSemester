@@ -1,2 +1,16 @@
 ﻿  main.c
+  myString.c
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory3\Strings\myString.c(8,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory3\Strings\myString.c(11,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory3\Strings\myString.c(36,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory3\Strings\myString.c(76,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory3\Strings\myString.c(79,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory3\Strings\myString.c(106,34): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory3\Strings\myString.c(111,43): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory3\Strings\myString.c(129,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory3\Strings\myString.c(132,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory3\Strings\myString.c(152,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory3\Strings\myString.c(196,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory3\Strings\myString.c(208,20): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода...
   Strings.vcxproj -> C:\Users\Admin\Desktop\Cprogramms\fromflash\Laboratory3\x64\Debug\Strings.exe

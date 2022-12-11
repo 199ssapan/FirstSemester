@@ -1,10 +1,10 @@
 #include "myString.h"
 
-int findSubString(char* stringMain, char* substring)
+int findIndexFirstSubString(char* stringMain, char* substring)
 { 
 	unsigned lenMain = mystrlen(stringMain);
 	unsigned lenSub = mystrlen(substring);
-	if (lenSub > lenMain || lenSub == 0 || lenMain == 0) return 0;
+	if (lenSub > lenMain || lenSub == 0 || lenMain == 0) return -1;
 	for (int i = 0; i < lenMain - lenSub + 1; i++)
 	{
 		unsigned count = 0;
@@ -14,7 +14,7 @@ int findSubString(char* stringMain, char* substring)
 		}
 		if (count == lenSub) return i;
 	}
-	return 0;
+	return -1;
 }
 
 char** StringToArray(char* rawString, char separator)
@@ -91,13 +91,13 @@ int findCountOfSubStrings(char* stringMain, char* substring)
 
 char* replace(char* string, char* subOut, char* subIn)
 {
-	if (findSubString(string, subOut) == -1 || mystrlen(subOut) == 0 || mystrlen(subIn) == 0) return NULL;
+	if (findIndexFirstSubString(string, subOut) == -1 || mystrlen(subOut) == 0 || mystrlen(subIn) == 0) return NULL;
 	unsigned len = mystrlen(string);
 	unsigned lenOut = mystrlen(subOut);
 	unsigned lenIn = mystrlen(subIn);
 	unsigned newLen = len + lenIn - lenOut;
 	char* newString = (char*)malloc(sizeof(char) * (newLen + 1));
-	int occurrenceIndex = findSubString(string, subOut);
+	int occurrenceIndex = findIndexFirstSubString(string, subOut);
 	for (int i = 0; i < occurrenceIndex; i++)
 	{
 		newString[i] = string[i];
