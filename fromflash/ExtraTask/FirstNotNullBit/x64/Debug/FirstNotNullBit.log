@@ -1,0 +1,5 @@
+﻿  main.c
+C:\Users\Admin\Desktop\ExtraTask\FirstNotNullBit\main.c(22,29): warning C4013: badFunc: нет определения; предполагается "extern" с возвратом типа "int"
+C:\Users\Admin\Desktop\ExtraTask\FirstNotNullBit\main.c(35,30): warning C4244: инициализация: преобразование "unsigned __int64" в "unsigned int", возможна потеря данных
+C:\Users\Admin\Desktop\ExtraTask\FirstNotNullBit\main.c(40,1): warning C4142: "badFunc": неопасное переопределение типа
+  FirstNotNullBit.vcxproj -> C:\Users\Admin\Desktop\ExtraTask\x64\Debug\FirstNotNullBit.exe
